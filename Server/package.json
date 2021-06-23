@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/file-sharing-erp-team/file-sharing-erp.git"
   },
-  "author": "Maksim Dmitriev, Mihail Toropchinov, Elizaveta Bobrova",
+  "author": "Mihail Toropchinov, Elizaveta Bobrova",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/file-sharing-erp-team/file-sharing-erp/issues"
