@@ -1,0 +1,19 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Server app for File-Sharing",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/file-sharing-erp-team/file-sharing-erp.git"
+  },
+  "author": "Maksim Dmitriev, Mihail Toropchinov, Elizaveta Bobrova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/file-sharing-erp-team/file-sharing-erp/issues"
+  },
+  "homepage": "https://github.com/file-sharing-erp-team/file-sharing-erp#readme"
+}
