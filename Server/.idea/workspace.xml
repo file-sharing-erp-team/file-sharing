@@ -20,8 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e11166a-2656-4cf0-b59b-78f64c1c03bf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/middleware/checkRoleMiddleware.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/userController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/userController.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +52,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1624971276912</updated>
-      <workItem from="1624971278344" duration="18208000" />
+      <workItem from="1624971278344" duration="18927000" />
     </task>
     <servers />
   </component>
