@@ -21,8 +21,8 @@ export const AuthPage = () => {
             e.preventDefault();
             
             console.log({...form})
-            const data = await request('/api/auth/login', 'POST', {...form})
-            
+            const data = await request('/file_sharing/login', 'GET', {...form})
+            console.log(data)
             auth.login(data.token, data.userId)
         }
         catch (e){
@@ -31,7 +31,7 @@ export const AuthPage = () => {
     }
     return(
         <div className=" w-100 min-vh-100 align-items-center" style={{display:'flex'}}>
-            <Form className="min-vw-50 w-50 min-vh-50 h-50 row mx-auto my-auto no-gutters" style={{marginRight: 0, border:'.5px solid black', borderRadius:'30px', justifyContent:'center',backgroundColor: 'white'}} onSubmit={loginHandler}>
+            <Form className="min-vw-50 w-50 min-vh-50 h-50 row mx-auto my-auto no-gutters" style={{marginRight: 0, border:'.5px solid black', borderRadius:'30px', justifyContent:'center',backgroundColor: 'white'}} >
                 <Form.Group className="col w-40" style={{width:'40%', marginRight: 0, padding: 0}}>
                     <Form.Group className="col  align-self-center">
                         <br />
@@ -47,7 +47,7 @@ export const AuthPage = () => {
                     </Form.Group>
                     <Form.Group controlId="formBasicCheckbox" className="col  align-self-center">
                         <Form.Check type="checkbox" label="Запомнить меня" style={{marginBottom: '20px'}}/>
-                        <Button variant="primary" type="submit" className="col  align-self-center">
+                        <Button variant="primary" type="submit" className="col  align-self-center" onClick={loginHandler}>
                             Submit
                         </Button>
                     </Form.Group>
