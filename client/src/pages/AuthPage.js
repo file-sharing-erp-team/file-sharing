@@ -21,7 +21,7 @@ export const AuthPage = () => {
             e.preventDefault();
             
             console.log({...form})
-            const data = await request('/file_sharing/login', 'GET', {...form})
+            const data = await request('/file_sharing/user/login', 'GET', {...form})
             console.log(data)
             auth.login(data.token, data.userId)
         }
