@@ -12,3 +12,5 @@ const User = sequelize.define('user', {
     last_name: {type: DataTypes.STRING, required: true},
     role: {type: DataTypes.INTEGER, required: true, defaultValue:0}
 })
+
+module.exports = User
