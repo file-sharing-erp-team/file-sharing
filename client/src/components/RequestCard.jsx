@@ -5,7 +5,7 @@ export const RequestCard = ({requestInfo}) => {
     //const route = "/req/" + requestInfo.id
     return(
         <>
-            <Card style={{ width: '18rem', height:"12rem" , marginTop:"1rem", marginLeft:"2rem"}}>
+            <Card style={{ width: '15rem', height:"12rem" , marginTop:"1rem", marginLeft:"2rem", marginBottom:"1rem" , padding:0}}>
                 <Card.Body>
                     <Card.Title>{requestInfo.title}</Card.Title>
                     <br/>
