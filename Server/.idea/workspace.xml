@@ -20,12 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e11166a-2656-4cf0-b59b-78f64c1c03bf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/controllers/userController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/model_user.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/UserRouter.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/mergeRoutes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/error/error.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/userController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/userController.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +53,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1624971276912</updated>
-      <workItem from="1624971278344" duration="9890000" />
+      <workItem from="1624971278344" duration="11454000" />
     </task>
     <servers />
   </component>
@@ -75,9 +72,9 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="733" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1624976565093">
+    <state x="733" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1624984016742">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="733" y="322" key="#com.intellij.fileTypes.FileTypeChooser/-1366.164.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1624976565093" />
+    <state x="733" y="322" key="#com.intellij.fileTypes.FileTypeChooser/-1366.164.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1624984016742" />
   </component>
 </project>
