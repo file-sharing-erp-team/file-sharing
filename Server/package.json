@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/file-sharing-erp-team/file-sharing-erp#readme",
   "dependencies": {
+    "config": "^3.3.6",
     "express": "^4.17.1",
     "sequelize": "^6.6.4"
   },
