@@ -1,10 +1,16 @@
 require('dotenv').config()
 const express = require('express')
 const sequelize = require('./db')
+const user = require('./models/model_user')
+const cors = require('cors')
+const router = require('./routes/mergeRoutes')
 
 const PORT = process.env.PORT || 5000
 
 const app = express()
+app.use(cors())
+app.use(express.json())
+app.use('/file_sharing', router)
 
 const start = async () => {
     try {
