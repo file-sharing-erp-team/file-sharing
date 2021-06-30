@@ -7,7 +7,7 @@ export const AuthPage = () => {
     const auth = useContext(AuthContext)
     const {loading, error, request, clearError} = useHttp()
     const [form, setForm] = useState( {
-        email: '',
+        login: '',
         password: ''
     })
 
@@ -21,7 +21,7 @@ export const AuthPage = () => {
             e.preventDefault();
             
             console.log({...form})
-            const data = await request('/file_sharing/user/login', 'GET', {...form})
+            const data = await request('/file_sharing/user/login', 'POST', {...form})
             console.log(data)
             auth.login(data.token, data.userId)
         }
@@ -35,8 +35,8 @@ export const AuthPage = () => {
                 <Form.Group className="col w-40" style={{width:'40%', marginRight: 0, padding: 0}}>
                     <Form.Group className="col  align-self-center">
                         <br />
-                        <Form.Label>Email</Form.Label>
-                        <Form.Control id="email" type="email" name="email" placeholder="Enter email" onChange={changeHandler}/>
+                        <Form.Label>Login</Form.Label>
+                        <Form.Control id="login" type="email" name="login" placeholder="Enter email" onChange={changeHandler}/>
                         <Form.Text className="text-muted">
                             Используйте Email с доменом oiate.ru
                         </Form.Text>
