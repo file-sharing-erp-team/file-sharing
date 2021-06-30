@@ -12,11 +12,14 @@ export const authRoutes = [
 
 export const publicRoutes = [
     {
-        path: AUTH_ROUTE,
-        Component: AuthPage
-    },
-    {
         path: ERR_ROUTE,
         Component: Page404
+    }
+]
+
+export const noAuthRoutes = [
+    {
+        path: AUTH_ROUTE,
+        Component: AuthPage
     }
 ]

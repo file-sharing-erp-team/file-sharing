@@ -26,7 +26,7 @@ export const AuthPage = () => {
             auth.login(data.token, data.userId)
         }
         catch (e){
-
+            
         }
     }
     return(
@@ -58,7 +58,6 @@ export const AuthPage = () => {
                     </Card>
                 </Form.Group>
             </Form>
-            
         </div>
     )
 }
