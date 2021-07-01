@@ -17,7 +17,7 @@ export const publicRoutes = [
         Component: Page404
     },
     {
-        path: CREATE_ROUTE,
+        path: CREATE_ROUTE + "/:type",
         Component: CreateReqPage
     }
 ]

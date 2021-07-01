@@ -26,7 +26,7 @@ export const AuthPage = () => {
             auth.login(data.token, data.userId)
         }
         catch (e){
-            
+            console.log(e.message)
         }
     }
     return(
