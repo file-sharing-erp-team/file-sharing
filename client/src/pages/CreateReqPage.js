@@ -1,12 +1,15 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
 import { Form, InputGroup } from 'bootstrap-4-react';
 import { Button} from 'react-bootstrap'
 import { Navig } from '../components/Navig';
 import {useHttp} from '../context/hooks/http.hook'
+import {useMessage} from '../context/hooks/message.hook'
 import axios from 'axios'
 
 export const CreateReqPage = () => {
+    const {loading, error, request, clearError} = useHttp()
+    const message = useMessage()
     const [form, setForm] = useState( {
         userId: '',
         firstName: '',
@@ -16,14 +19,20 @@ export const CreateReqPage = () => {
         phoneNumber: ''
     })
 
-    const [files, setFiles] = useState(null)
+    const [files, setFiles] = useState([])
 
     const changeHandler = event => {
         setForm({ ...form , [event.target.name]: event.target.value})
     }
 
+    useEffect(() => {
+        message(error)
+        clearError()
+    }, [error,message,clearError])
+
     const fileUpload = event => {
-        setFiles(event.taget.files)
+        console.log(event)
+        setFiles(event.target.files)
     }
 
     const createReq = e => {
