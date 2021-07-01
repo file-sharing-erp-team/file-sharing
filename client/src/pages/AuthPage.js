@@ -2,6 +2,7 @@ import React, {useContext, useState} from 'react';
 import {AuthContext} from './../context/Auth.context'
 import {useHttp} from '../context/hooks/http.hook' 
 import {Form, Button , Card} from 'react-bootstrap'
+import { toast } from 'react-toastify';
 
 export const AuthPage = () => {
     const auth = useContext(AuthContext)
@@ -27,7 +28,7 @@ export const AuthPage = () => {
             auth.login(data.token, data.userId)
         }
         catch (e){
-            console.log(e.message)
+            toast.error(e.message)
         }
     }
     return(

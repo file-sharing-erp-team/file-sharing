@@ -1,14 +1,18 @@
 import React, {useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
 import { Form, InputGroup } from 'bootstrap-4-react';
-import { Button} from 'react-bootstrap'
+import { Button , Toast} from 'react-bootstrap'
 import { Navig } from '../components/Navig';
 import {useHttp} from '../context/hooks/http.hook'
 import {useMessage} from '../context/hooks/message.hook'
 import axios from 'axios'
+import 'react-toastify/dist/ReactToastify.css';
+import {toast} from 'react-toastify'
+
 
 export const CreateReqPage = () => {
     const {loading, error, request, clearError} = useHttp()
+    const [show, setShow] = useState(false);
     const message = useMessage()
     const [form, setForm] = useState( {
         userId: '',
@@ -25,10 +29,16 @@ export const CreateReqPage = () => {
         setForm({ ...form , [event.target.name]: event.target.value})
     }
 
+    
+
     useEffect(() => {
-        message(error)
-        clearError()
-    }, [error,message,clearError])
+        console.log("Error" + error)
+        if(error !== null){
+            toast(error)
+        }
+        
+        //clearError()
+    }, [error])
 
     const fileUpload = event => {
         console.log(event)
@@ -46,10 +56,26 @@ export const CreateReqPage = () => {
 
         axios.post('/api/img/upload/users', formData)
         .then(res => {
-            console.log(res)
+            toast.success(res.message, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
         })
         .catch(err => {
-            console.log(err)
+            toast.error(err.message, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         })
     }
 
@@ -59,9 +85,11 @@ export const CreateReqPage = () => {
     if(useParams().type === '1'){
         return(
             <div>
+                
                 <header>
                     <Navig />
                 </header>
+                
                 <div className="container mx-auto" style={{backgroundColor: "white", borderRadius: "5px", height:"85vh", overflow: "auto", marginTop: '2rem'}}>
                     <Form style={{marginTop: '1rem'}} onSubmit={createReq}>
                         <h3>Заявление на Материальную Поддержку</h3>
@@ -130,7 +158,15 @@ export const CreateReqPage = () => {
                             </Form.Group>
                         </Form.Group>
                     </Form>
+                   
                 </div>
+                <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
+                        <Toast.Header>
+                            <strong className="mr-auto">Уведомление</strong>
+                            <small>File Sharing</small>
+                        </Toast.Header>
+                        <Toast.Body>{error}</Toast.Body>
+                </Toast>
             </div>
         )
     }
