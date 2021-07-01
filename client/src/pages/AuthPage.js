@@ -15,6 +15,7 @@ export const AuthPage = () => {
         setForm({ ...form , [event.target.name]: event.target.value})
     }
 
+    
 
     const loginHandler = async (e) => {
         try{
