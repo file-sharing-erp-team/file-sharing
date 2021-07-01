@@ -19,6 +19,10 @@ export const publicRoutes = [
     {
         path: CREATE_ROUTE + "/:type",
         Component: CreateReqPage
+    },
+    {
+        path: REQ_ROUTE, 
+        Component: ReqPage
     }
 ]
 

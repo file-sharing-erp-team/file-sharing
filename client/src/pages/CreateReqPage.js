@@ -1,9 +1,50 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {useParams} from 'react-router-dom'
 import { Form, InputGroup } from 'bootstrap-4-react';
+import { Button} from 'react-bootstrap'
 import { Navig } from '../components/Navig';
+import {useHttp} from '../context/hooks/http.hook'
+import axios from 'axios'
 
 export const CreateReqPage = () => {
+    const [form, setForm] = useState( {
+        userId: '',
+        firstName: '',
+        lastName: '',
+        middleName: '',
+        groupId: '',
+        phoneNumber: ''
+    })
+
+    const [files, setFiles] = useState(null)
+
+    const changeHandler = event => {
+        setForm({ ...form , [event.target.name]: event.target.value})
+    }
+
+    const fileUpload = event => {
+        setFiles(event.taget.files)
+    }
+
+    const createReq = e => {
+        e.preventDefault()
+
+        const formData = new FormData();
+        formData.append('files', files)
+        formData.append('data', form)
+
+        console.log(formData)
+
+        axios.post('/api/img/upload/users', formData)
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+
+
     console.log(useParams().type)
     //Мат помощь
     if(useParams().type === '1'){
@@ -13,44 +54,71 @@ export const CreateReqPage = () => {
                     <Navig />
                 </header>
                 <div className="container mx-auto" style={{backgroundColor: "white", borderRadius: "5px", height:"85vh", overflow: "auto", marginTop: '2rem'}}>
-                    <Form style={{marginTop: '1rem'}}>
+                    <Form style={{marginTop: '1rem'}} onSubmit={createReq}>
                         <h3>Заявление на Материальную Поддержку</h3>
                         <br />
                         <InputGroup mb="3">
                             <InputGroup.PrependText>
                                 Имя и Фамилия
                             </InputGroup.PrependText>
-                            <Form.Input className="col" type="text" id="firstName" placeholder="Введите имя..." />
+                            <Form.Input 
+                            className="col" 
+                            type="text" 
+                            id="firstName"
+                            name="firstName" 
+                            placeholder="Введите имя..." 
+                            onChange={changeHandler}
+                            />
                             
-                            <Form.Input className="col" type="text" id="lastName" placeholder="Введите фамилию..." />
+                            <Form.Input 
+                            className="col" 
+                            type="text" 
+                            id="lastName" 
+                            placeholder="Введите фамилию..." 
+                            name="lastName"
+                            onChange={changeHandler}
+                            />
                             
                         </InputGroup>
                         <Form.Group>
                             <label htmlFor="middleName">Отчество (при наличии)</label>
-                            <Form.Input type="text" id="middleName" placeholder="Введите отчество..." />
+                                <Form.Input type="text" id="middleName" placeholder="Введите отчество..." name="middleName" onChange={changeHandler}/>
                             <br />
                             <label htmlFor="groupId">Группа</label>
-                            <Form.Input type="text" id="groupId" placeholder="Группа..." />
+                                <Form.Input type="text" id="groupId" placeholder="Группа..." name="groupId" onChange={changeHandler}/>
                             <br />
                             <label htmlFor="phoneNumber">Мобильный</label>
                             <InputGroup mb="2">
                                 <InputGroup.PrependText>
                                     +7
                                 </InputGroup.PrependText>
-                                <Form.Input type="text" id="groupId" placeholder="Номер мобильного телефона..." />
+                                <Form.Input type="text" id="phoneNumber" placeholder="Номер мобильного телефона..." name="phoneNumber" onChange={changeHandler}/>
                                 
                             </InputGroup>
                             
                         </Form.Group>
-                        <Form.Group>
-                            
+                        <Form.Group style={{color:'red'}}>
+                            <p>Необходимые документы</p>
+                            <ul>
+                                <li>
+                                    Трудовые книги родителей или опекунов
+                                </li>
+                                <li>
+                                    Пенсионное удостоверение (при наличии)
+                                </li>
+                            </ul>
                         </Form.Group>
-                        <Form.Group>
-                            
-                        </Form.Group>
-                        <Form.Group>
-                            <label htmlFor="exampleControlsFile1">Example file</label>
-                            <Form.File id="exampleControlsFile1"/>
+                        
+                        <Form.Group >
+                            <Form.Group >
+                                <label htmlFor="files">Необходимые документы</label>
+                                <Form.File id="files" multiple onChange={fileUpload}/>
+                            </Form.Group>
+                            <Form.Group >
+                                <Button variant="primary" type="submit" className="col  align-self-center">
+                                    Отправить
+                                </Button>
+                            </Form.Group>
                         </Form.Group>
                     </Form>
                 </div>
