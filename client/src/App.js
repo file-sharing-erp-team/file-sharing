@@ -9,11 +9,11 @@ import { ToastContainer } from 'react-toastify';
 import './styles/index.scss'
 
 function App() {
-  const {login, logout, token, userId, ready} = useAuth()
+  const {login, logout, token, role, userId, ready} = useAuth()
   const isAuthenticated = !!token
   return (
     <AuthContext.Provider value={{
-      token, login, logout, userId, isAuthenticated
+      token, login, logout, userId, role, isAuthenticated
     }}>
       
       <BrowserRouter>

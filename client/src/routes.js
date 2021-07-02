@@ -2,8 +2,9 @@ import { AuthPage } from "./pages/AuthPage";
 import { ReqPage } from "./pages/ReqPage";
 import {Page404} from './pages/Page404'
 import {CreateReqPage} from './pages/CreateReqPage'
-import { AUTH_ROUTE, REQ_ROUTE, ERR_ROUTE, CREATE_ROUTE } from "./utils/consts";
+import { AUTH_ROUTE, REQ_ROUTE, ERR_ROUTE, CREATE_ROUTE , ADMIN_ROUTE} from "./utils/consts";
 import { CreationPage } from "./pages/CreationPage";
+import { DashBoard } from "./Admin/DashBoard";
 
 export const authRoutes = [
     {
@@ -32,6 +33,13 @@ export const publicRoutes = [
     {
         path: CREATE_ROUTE + "/:type",
         Component: CreateReqPage
+    }
+]
+
+export const adminRoutes = [
+    {
+        path: ADMIN_ROUTE,
+        Component: DashBoard
     }
 ]
 
