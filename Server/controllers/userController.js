@@ -24,7 +24,6 @@ class UserController {
         }
         const hashPassword = await bcrypt.hash(password, 5)
         const user = await User.create({login, password: hashPassword, group_id, first_name, middle_name, last_name, role  })
-        //return res.status(200).json({message: "Пользователь создан"})
         return res.status(200).json({user})
     }
 
