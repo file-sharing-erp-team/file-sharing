@@ -9,9 +9,6 @@ export const NavBar = () => {
     const userLink = "/user/" + userId
     const settingsLink = "/settings/" + userId
     
-    const searchHandler = event => {
-        event.preventDefault()
-    }
 
     const logoutHandler = event => {
         event.preventDefault()
