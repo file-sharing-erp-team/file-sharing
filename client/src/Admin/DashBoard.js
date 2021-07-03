@@ -34,8 +34,19 @@ export const DashBoard = () => {
         <div>
             <NavBar />
             <div className="container row mx-auto" backgroundColor="white" height="100vh" width="80vw" style={{backgroundColor: "white", borderRadius: "5px",height:"85vh", overflow: "auto", marginTop: '2rem'}}>
-                {!loading && tickets && <TicketList tickets={tickets} />}
-                {loading && <div>Новых заявок нет</div>}
+               
+                {(() => {
+                    if(!loading && tickets){
+                        return(
+                            <TicketList tickets={tickets} />
+                        )
+                    }
+                    else{
+                       return(
+                            <div>Новых заявок нет</div>
+                       )
+                    }
+                })}
             </div>
         </div>
     )
