@@ -40,6 +40,7 @@ export const Navig = () => {
               <Form.Input type="search" placeholder="Поиск..." mr="sm-2" />
               <Button outline success my="2 sm-0">Найти</Button>
             </Form>
+            
           </Collapse>
         </Navbar>
       )

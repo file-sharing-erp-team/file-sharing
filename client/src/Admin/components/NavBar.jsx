@@ -26,19 +26,16 @@ export const NavBar = () => {
           <Collapse navbar id="navbarSupportedContent">
             <Navbar.Nav mr="auto">
               <Nav.Item active>
-                <Nav.Link href="/my">Главная</Nav.Link>
+                <Nav.Link href="/admin">Главная</Nav.Link>
               </Nav.Item>
               <Nav.Item active>
-                <Nav.Link href="/create">Новая заявка</Nav.Link>
-              </Nav.Item >
-                
-              <Nav.Item active>
-                <Nav.Link href="/messages">Почта</Nav.Link>
+                <Nav.Link href="/post">Почта</Nav.Link>
               </Nav.Item>
             </Navbar.Nav>
-            <Form inline my="2 lg-0" onSubmit={searchHandler}>
-              <Form.Input type="search" placeholder="Поиск..." mr="sm-2" />
-              <Button outline success my="2 sm-0">Найти</Button>
+            <Form inline my="2 lg-0" onSubmit={logoutHandler}>
+              
+                <Button type="submit">Выйти</Button>
+              
             </Form>
           </Collapse>
         </Navbar>
