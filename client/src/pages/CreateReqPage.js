@@ -11,6 +11,7 @@ import {toast} from 'react-toastify'
 
 
 export const CreateReqPage = () => {
+    document.title = "FileSharing - Создать новый запрос"
     const {loading, error, request, clearError} = useHttp()
     const [show, setShow] = useState(false);
     const message = useMessage()

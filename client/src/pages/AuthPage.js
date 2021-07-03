@@ -5,6 +5,7 @@ import {Form, Button , Card} from 'react-bootstrap'
 import { toast } from 'react-toastify';
 
 export const AuthPage = () => {
+    document.title = "FileSharing - Login"
     const auth = useContext(AuthContext)
     const {loading, error, request, clearError} = useHttp()
     const [form, setForm] = useState( {

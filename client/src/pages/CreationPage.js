@@ -3,6 +3,7 @@ import {RequestsList} from '../components/RequestsList'
 import {Navig} from '../components/Navig'
 
 export const CreationPage = () => {
+    document.title = "FileSharing - Список услуг"
     const requests = [
         {
             type: 1,

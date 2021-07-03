@@ -4,6 +4,7 @@ import { MyRequestCard } from '../components/MyRequestCard';
 import {useHttp} from '../context/hooks/http.hook' 
 
 export const ReqPage = () => {
+    document.title = "FileSharing - Мои заявки"
     const {loading, error, request, clearError} = useHttp()
     const info = {
         id: 1,
