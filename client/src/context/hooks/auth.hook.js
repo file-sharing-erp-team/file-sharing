@@ -14,7 +14,7 @@ export const useAuth = () => {
         setRole(role)
 
         localStorage.setItem(storageName, JSON.stringify({
-            userId: id, token: jwtToken
+            userId: id, token: jwtToken, role: role
         }))
     }, [])
 

@@ -6,8 +6,8 @@ export const AppRouter = ({isAuth}) => {
     let role= false
     return(
             <Switch>
-                {isAuth && !role && authRoutes.map(route => {
-                    return(<Route key={route.path} path={route.path} component={route.Component} exact /> )
+                {isAuth && authRoutes.map(route => {
+                    return(<Route key={route.path} path={route.path} component={route.Component} exact /> && <Redirect to ="/my" />)
                 })}
                 {!isAuth && noAuthRoutes.map(route => {
                     return(<Route key={route.path} path={route.path} component={route.Component} exact />)

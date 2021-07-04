@@ -26,7 +26,7 @@ export const AuthPage = () => {
             console.log({...form})
             const data = await request('/file_sharing/user/login', 'POST', {...form})
             console.log(data)
-            auth.login(data.token, data.userId)
+            auth.login(data.token, data.userId, data.role)
         }
         catch (e){
             toast.error(e.message)
