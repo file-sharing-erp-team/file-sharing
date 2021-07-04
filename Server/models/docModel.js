@@ -8,7 +8,7 @@ const Doc = sequelize.define('doc', {
     file_name: { type: DataTypes.STRING, required: true, unique: true},
     src: {type: DataTypes.STRING, required: true },
     author_id: {type: DataTypes.INTEGER, required: true, references: {   
-            model: "user",
+            model: User,
             key: "id"
         }
     },
@@ -17,4 +17,4 @@ const Doc = sequelize.define('doc', {
     processed: {type: DataTypes.BOOLEAN,default: false }
 })
 
-return Doc;
+module.exports = Doc;

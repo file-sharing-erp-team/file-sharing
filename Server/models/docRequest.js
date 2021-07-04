@@ -7,20 +7,25 @@ const Docs = require('./docModel')
         id: {type: DataTypes.INTEGER, primaryKey: true},
 
         user_id: {type: DataTypes.INTEGER, required: true, references: {   
-            model: "user",
+            model: User,
             key: "id"
             }
         },
 
-        [file_id]: {type: DataTypes.INTEGER, required: true, references: {   
-            model: "doc",
-            key: "id"
-            }
+        file_id: {
+            type: DataTypes.ARRAY(
+                {
+                    type: DataTypes.INTEGER, required: true, references: {   
+                        model: Docs,
+                        key: "id"
+                    }
+                }
+            )
         },
 
         date : { type: DataTypes.DATE, required: true},
         processed: {type: DataTypes.BOOLEAN,default: false }
     })
 
-return DocRequest;
+module.exports = DocRequest;
 

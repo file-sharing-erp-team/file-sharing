@@ -6,4 +6,4 @@ const Chat = sequelize.define('chat', {
     chat_name: { type: DataTypes.STRING, required: true, unique: false}
 })
 
-return Chat;
+module.exports = Chat;

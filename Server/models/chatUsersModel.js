@@ -7,15 +7,15 @@ const Chat = require('./model_chat')
 const ChatUser = sequelize.define('chat_user',  {
     id: {type: DataTypes.INTEGER, primaryKey: true},
     chat_id: {type: DataTypes.INTEGER, required: true, references: {   
-            model: "chat",
+            model: Chat,
             key: "id"
         }
     },
     user_id: {type: DataTypes.INTEGER, required: true, references: {   
-            model: "user",
+            model: User,
             key: "id"
         }
     }
 })
 
-return ChatUser;
+module.exports = ChatUser;
