@@ -1,10 +1,9 @@
 import {Switch, Route, Redirect} from 'react-router-dom'
 import {authRoutes, publicRoutes, noAuthRoutes, adminRoutes} from './../routes'
 
-export const AppRouter = (isAuth) => {
+export const AppRouter = ({isAuth}) => {
     console.log(isAuth)
-    isAuth = true
-    let role = true
+    let role= false
     return(
             <Switch>
                 {isAuth && !role && authRoutes.map(route => {
