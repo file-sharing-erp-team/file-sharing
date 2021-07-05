@@ -20,9 +20,7 @@ export const CreationPage = () => {
             <header>
                 <Navig />
             </header>
-            
             <div className="container row mx-auto" backgroundColor="white" height="100vh" width="80vw" style={{backgroundColor: "white", borderRadius: "5px",height:"85vh", overflow: "auto", marginTop: '2rem'}}>
-                
                 <RequestsList requests={requests} />
             </div>
         </div>

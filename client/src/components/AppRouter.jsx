@@ -19,7 +19,6 @@ export const AppRouter = ({isAuth, role}) => {
                 {publicRoutes.map(route => {
                     return(<Route key={route.path} path={route.path} component={route.Component} exact />)
                 })}
-               
             </Switch>
     )
 }
