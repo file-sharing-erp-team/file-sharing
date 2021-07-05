@@ -17,13 +17,13 @@ class DocController {
         }
         const docReq = await DocReq.create({user_id:userID, file_id:files}) //заполняем docRequest 
         //const doc = await Doc.create({id:files})  //! Раскоментить когда разберемся со всеми данными файла
-        return res.status(200).json({docReq})   //! Добавить doc
+        return res.status(200).json({docReq})       //! Добавить doc
     }
 
 
     async getDocsByUserId (req, res, next) {
-        //? const {userID} = req.headers
-        const {userID} = req.body
+        //? const {userID} = req.headers    //в случае если id в хедере, раскоментить эту строчку
+        const {userID} = req.body           //?в случае если id в хедере, закоментить 
         if (!userID) {
             return next(ApiError.badRequest('Некорректные данные'))
         }
@@ -34,4 +34,6 @@ class DocController {
         const userDocs = await docReq.findOne({where: {user_id:userID}})
         return res.status(200).json({userDocs})
     }
+
+    
 }
