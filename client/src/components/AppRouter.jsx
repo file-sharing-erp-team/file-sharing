@@ -5,6 +5,7 @@ export const AppRouter = ({isAuth, role}) => {
     console.log(isAuth)
     console.log(role)
     return(
+            //? Switch is now working but where is some bugs with Redirecting
             <Switch>
                 {isAuth && authRoutes.map(route => {
                     return(<Route key={route.path} path={route.path} component={route.Component} exact /> )
