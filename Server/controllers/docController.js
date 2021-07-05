@@ -19,4 +19,19 @@ class DocController {
         //const doc = await Doc.create({id:files})  //! Раскоментить когда разберемся со всеми данными файла
         return res.status(200).json({docReq})   //! Добавить doc
     }
+
+
+    async getDocsByUserId (req, res, next) {
+        //? const {userID} = req.headers
+        const {userID} = req.body
+        if (!userID) {
+            return next(ApiError.badRequest('Некорректные данные'))
+        }
+        const checkUser = await User.findOne({where: {id:userID}})
+        if (!checkUser) {
+            return next(ApiError.badRequest('Пользователя не существует'))
+        }
+        const userDocs = await docReq.findOne({where: {user_id:userID}})
+        return res.status(200).json({userDocs})
+    }
 }
