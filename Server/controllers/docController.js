@@ -5,6 +5,9 @@ const User = require('../models/model_user')
 
 class DocController {
 
+    //* СОЗДАТЬ ЗАЯВКУ
+    //TODO ПРИВЯЗАТЬ СОЗДАНИЕ И СОХРАНЕНИЕ ФАЙЛА
+
     async createDoc (req,res,next) {
         const {type , userID, firstName, lastName, middleName, phone, group, files} = req.body
         if (!type || !userID || !firstName || !lastName || !middleName ||!phone ||!group ||!files) {
@@ -21,8 +24,10 @@ class DocController {
     }
 
 
+    //* ПОЛУЧИТЬ ВСЕ ЗАЯВКИ ПО ID ПОЛЬЗОВАТЕЛЯ (АДМИНКА)
+
     async getDocsByUserId (req, res, next) {
-        //? const {userID} = req.headers    //в случае если id в хедере, раскоментить эту строчку
+        //? const {userID} = req.headers    //в случае если id пользователя в хедере, раскоментить эту строчку
         const {userID} = req.body           //?в случае если id в хедере, закоментить 
         if (!userID) {
             return next(ApiError.badRequest('Некорректные данные'))
@@ -35,5 +40,22 @@ class DocController {
         return res.status(200).json({userDocs})
     }
 
-    
+    //* ПОЛУЧИТЬ СВОИ ЗАЯВКИ (ПО ТОКЕНУ) (ДЛЯ ПОЛЬЗОВАТЕЛЯ)
+
+    async getUserDocs (req, res, next) {
+        const token = req.headers.authorization.split(' ')[1]
+        if(!token) {
+            return res.status(401).json({message: "Пользователь не авторизован"})
+        }
+        const decoded = jwt.verify(token, process.env.SECRET_KEY)
+        const userID = decoded.id
+        const checkUser = await User.findOne({where: {id:userID}})
+        if (!checkUser) {
+            return next(ApiError.badRequest('Пользователя не существует'))
+        }
+        const userDocs = await docReq.findOne({where: {user_id:userID}})
+        return res.status(200).json({userDocs})
+    }
 }
+
+module.exports = new DocController()
