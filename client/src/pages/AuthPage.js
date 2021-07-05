@@ -3,10 +3,12 @@ import {AuthContext} from './../context/Auth.context'
 import {useHttp} from '../context/hooks/http.hook' 
 import {Form, Button , Card} from 'react-bootstrap'
 import { toast } from 'react-toastify';
+import { useHistory } from "react-router-dom";
 
 export const AuthPage = () => {
     document.title = "FileSharing - Login"
     const auth = useContext(AuthContext)
+    const history = useHistory()
     const {loading, error, request, clearError} = useHttp()
     const [form, setForm] = useState( {
         login: '',
@@ -27,6 +29,12 @@ export const AuthPage = () => {
             const data = await request('/file_sharing/user/login', 'POST', {...form})
             console.log(data)
             auth.login(data.token, data.userId, data.role)
+            if(!!data.role){
+                history.push('/admin')
+            }
+            else{
+                history.push('/my')
+            }
         }
         catch (e){
             toast.error(e.message)

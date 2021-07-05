@@ -9,43 +9,36 @@ import { DashBoard } from "./Admin/DashBoard";
 export const authRoutes = [
     {
         path: REQ_ROUTE, 
-        Component: ReqPage
+        Component: ReqPage,
+        id: 1
     },
     {
         path: CREATE_ROUTE + "/:type",
-        Component: CreateReqPage
-    },
-    {
-        path: REQ_ROUTE, 
-        Component: ReqPage
+        Component: CreateReqPage,
+        id: 2
     }
 ]
 
 export const publicRoutes = [
     {
         path: ERR_ROUTE,
-        Component: Page404
-    },
-    {
-        path: CREATE_ROUTE,
-        Component: CreationPage
-    },
-    {
-        path: CREATE_ROUTE + "/:type",
-        Component: CreateReqPage
+        Component: Page404,
+        id: 3
     }
 ]
 
 export const adminRoutes = [
     {
         path: ADMIN_ROUTE,
-        Component: DashBoard
+        Component: DashBoard,
+        id: 1
     }
 ]
 
 export const noAuthRoutes = [
     {
         path: AUTH_ROUTE,
-        Component: AuthPage
+        Component: AuthPage,
+        id: 1
     }
 ]
