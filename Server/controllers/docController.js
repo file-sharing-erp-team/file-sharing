@@ -15,8 +15,8 @@ class DocController {
         if (!checkUser) {
             return next(ApiError.badRequest('Пользователя не существует'))
         }
-        
-        const doc = await Doc.create({login, password: hashPassword, group_id, first_name, middle_name, last_name, role  })
-        return res.status(200).json({user})
+        const docReq = await DocReq.create({user_id:userID, file_id:files}) //заполняем docRequest 
+        //const doc = await Doc.create({id:files})  //! Раскоментить когда разберемся со всеми данными файла
+        return res.status(200).json({docReq})   //! Добавить doc
     }
 }
