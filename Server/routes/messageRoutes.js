@@ -3,6 +3,6 @@ const router = new Router
 const messageController = require('../controllers/messageController')
 
 router.POST('/')
-router.GET('/')
+router.get('/')
 
 module.exports = router
