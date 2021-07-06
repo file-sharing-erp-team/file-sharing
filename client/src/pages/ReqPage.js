@@ -1,16 +1,34 @@
-import React from 'react';
+import React, {useState, useContext, useCallback, useEffect} from 'react';
 import {Navig} from '../components/Navig'
 import { MyRequestCard } from '../components/MyRequestCard';
 import {useHttp} from '../context/hooks/http.hook' 
+import { AuthContext } from '../context/Auth.context';
+import { toast } from 'react-toastify';
 
 export const ReqPage = () => {
     document.title = "FileSharing - Мои заявки"
+   
+    const [info, setInfo] = useState(null)
+    const {token, userId} = useContext(AuthContext)
     const {loading, error, request, clearError} = useHttp()
-    const info = {
-        id: 1,
-        status: 1,
-        title: "Мат. помощь"
-    }
+    
+
+    const getInfo = useCallback(async () => {
+        try{
+            const data = await request(`/file_sharing/docs/getDocs`, 'GET', null, {
+                Authorization: `Bearer ${token} `
+             })
+            setInfo(data)
+        }catch(e){
+            toast.error(e)
+        }
+    },[request, token])
+
+    useEffect(() => {
+        getInfo()
+    }, [getInfo])
+
+
     return(
         <div className="block">
             <header>
@@ -19,11 +37,7 @@ export const ReqPage = () => {
             <br />
             <div className="container row mx-auto" backgroundColor="white" height="100vh" width="80vw" style={{backgroundColor: "white", borderRadius: "5px",height:"85vh", overflow: "auto"}}>
                 
-                {!loading && info && <MyRequestCard requestInfo={info}></MyRequestCard>}
-                {!loading && info && <MyRequestCard requestInfo={info}></MyRequestCard>}
-                {!loading && info && <MyRequestCard requestInfo={info}></MyRequestCard>}
-                {!loading && info && <MyRequestCard requestInfo={info}></MyRequestCard>}
-                {!loading && info && <MyRequestCard requestInfo={info}></MyRequestCard>}
+                
                 
             </div>
         </div>

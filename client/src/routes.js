@@ -18,6 +18,11 @@ export const authRoutes = [
         path: CREATE_ROUTE + "/:type",
         Component: CreateReqPage,
         id: 2
+    },
+    {
+        path: CREATE_ROUTE, 
+        Component: CreationPage,
+        id: 3
     }
 ]
 
