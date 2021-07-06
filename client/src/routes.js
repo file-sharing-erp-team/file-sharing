@@ -6,6 +6,8 @@ import { AUTH_ROUTE, REQ_ROUTE, ERR_ROUTE, CREATE_ROUTE , ADMIN_ROUTE} from "./u
 import { CreationPage } from "./pages/CreationPage";
 import { DashBoard } from "./Admin/DashBoard";
 
+
+
 export const authRoutes = [
     {
         path: REQ_ROUTE, 
