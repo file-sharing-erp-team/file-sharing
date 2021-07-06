@@ -13,7 +13,6 @@ class DocController {
         if (!type || !userID || !firstName || !lastName || !middleName ||!phone ||!group ||!files) {
             return next(ApiError.badRequest('Некорректные данные'))
         }
-
         const checkUser = await User.findOne({where: {id:userID}})
         if (!checkUser) {
             return next(ApiError.badRequest('Пользователя не существует'))
