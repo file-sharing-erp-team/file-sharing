@@ -25,22 +25,6 @@ class DocController {
     }
 
 
-    //* ПОЛУЧИТЬ ВСЕ ЗАЯВКИ ПО ID ПОЛЬЗОВАТЕЛЯ (АДМИНКА) GET 
-    //* /file_sharing/docs/getDocsByUserId
-    async getDocsByUserId (req, res, next) {
-        const {userID} = req.headers            //? в случае если id пользователя в хедере, раскоментить эту строчку
-        //const {userID} = req.body             //? в случае если id в хедере, закоментить 
-        if (!userID) {
-            return next(ApiError.badRequest('Некорректные данные'))
-        }
-        const checkUser = await User.findOne({where: {id:userID}})
-        if (!checkUser) {
-            return next(ApiError.badRequest('Пользователя не существует'))
-        }
-        const userDocs = await docReq.findOne({where: {user_id:userID}})
-        return res.status(200).json({userDocs})
-    }
-
     //* ПОЛУЧИТЬ СВОИ ЗАЯВКИ (ПО ТОКЕНУ) (ДЛЯ ПОЛЬЗОВАТЕЛЯ) GET 
     //* /file_sharing/docs/getDocs
     async getUserDocs (req, res, next) {
