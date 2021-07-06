@@ -4,7 +4,8 @@ const UserRouter = require('./userRouter')
 const DocRouter = require('./docRoutes')
 const ChatRouter = require('./chatRoutes')
 const MessageRouter = require('./messageRoutes')
-const AdminController = require('./adminRoutes')
+const AdmUserRouter = require('../admin_routes/admUserRoutes')
+const AdminDocsController = require('../admin_routes/admDocsRoutes')
 const authMiddleware = require('../middleware/authMiddleware')
 
 
@@ -14,6 +15,7 @@ router.use('/user', UserRouter)                     //* /file_sharing/user
 router.use('/docs', authMiddleware, DocRouter)      //* /file_sharing/docs
 router.use('/chat', authMiddleware, ChatRouter)     //* /file_sharing/chat
 router.use('/msg', authMiddleware, MessageRouter)   //* /file_sharing/msg
-router.use('/admin', authMiddleware, AdminController)   //* /file_sharing/admin
+router.use('/admUser', authMiddleware, AdmUserRouter)   //* /file_sharing/admUser
+router.use('/admDocs', authMiddleware, AdminDocsController)   //* /file_sharing/admDocs
 
 module.exports = router
