@@ -5,6 +5,7 @@ import { Button , Toast} from 'react-bootstrap'
 import { Navig } from '../components/Navig';
 import {useHttp} from '../context/hooks/http.hook'
 import {useMessage} from '../context/hooks/message.hook'
+import {useAuth} from '../context/hooks/auth.hook'
 import axios from 'axios'
 import 'react-toastify/dist/ReactToastify.css';
 import {toast} from 'react-toastify'
@@ -13,10 +14,12 @@ import {toast} from 'react-toastify'
 export const CreateReqPage = () => {
     document.title = "FileSharing - Создать новый запрос"
     const {loading, error, request, clearError} = useHttp()
+    const {token, role, userId} = useAuth()
     const [show, setShow] = useState(false);
     const message = useMessage()
     const [form, setForm] = useState( {
-        userId: '',
+        type: useParams().type,
+        userId: userId,
         firstName: '',
         lastName: '',
         middleName: '',
@@ -53,9 +56,9 @@ export const CreateReqPage = () => {
         formData.append('files', files)
         formData.append('data', form)
 
-        console.log(formData)
+        console.log(formData.getAll)
 
-        axios.post('/api/img/upload/users', formData)
+        axios.put('http://localhost:5000/file_sharing/docs/create', formData, {headers: {'Authorization': `Bearer ${token}`}})
         .then(res => {
             toast.success(res.message, {
                 position: "bottom-right",

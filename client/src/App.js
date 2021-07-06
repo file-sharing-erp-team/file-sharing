@@ -13,7 +13,10 @@ function App() {
   const {login, logout, token, role, userId, ready} = useAuth()
   const {loading} = useHttp()
   const isAuthenticated = !!token
-  const isAdmin = !!role
+  let isAdmin = false
+  if(role === 1){
+    isAdmin = true
+  }
   return (
     <AuthContext.Provider value={{
       token, login, logout, userId, role, isAuthenticated
