@@ -10,7 +10,7 @@ class DocController {
     //TODO ПРИВЯЗАТЬ СОЗДАНИЕ И СОХРАНЕНИЕ ФАЙЛА
 
     async createDoc (req,res,next) {
-        const {type , userID, firstName, lastName, middleName, phone, group, files} = req.body
+        const {type , userID, firstName, lastName, middleName, phone, group} = req.body
         if (!type || !userID || !firstName || !lastName || !middleName ||!phone ||!group ||!files) {
             return next(ApiError.badRequest('Некорректные данные'))
         }
