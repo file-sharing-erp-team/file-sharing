@@ -10,7 +10,7 @@ class DocController {
     //TODO ПРИВЯЗАТЬ СОЗДАНИЕ И СОХРАНЕНИЕ ФАЙЛА
 
     async createDoc (req,res,next) {
-        const {type , userID, firstName, lastName, middleName, phone, group, files} = req.body
+        const {type , userID, firstName, lastName, middleName, phone, group} = req.body
         if (!type || !userID || !firstName || !lastName || !middleName ||!phone ||!group ||!files) {
             return next(ApiError.badRequest('Некорректные данные'))
         }
@@ -18,7 +18,7 @@ class DocController {
         if (!checkUser) {
             return next(ApiError.badRequest('Пользователя не существует'))
         }
-        const docReq = await DocReq.create({user_id:userID, file_id:files}) //заполняем docRequest 
+        const docReq = await DocReq.create({user_id:userID}) //заполняем docRequest 
         //const doc = await Doc.create({id:files})  //! Раскоментить когда разберемся со всеми данными файла
         return res.status(200).json({docReq})       //! Добавить doc
     }
