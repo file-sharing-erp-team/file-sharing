@@ -1,11 +1,14 @@
 const Router = require('express')
 const router = new Router
+
 const UserRouter = require('./userRouter')
 const DocRouter = require('./docRoutes')
 const ChatRouter = require('./chatRoutes')
 const MessageRouter = require('./messageRoutes')
+
 const AdmUserRouter = require('../admin_routes/admUserRoutes')
 const AdminDocsController = require('../admin_routes/admDocsRoutes')
+
 const authMiddleware = require('../middleware/authMiddleware')
 
 

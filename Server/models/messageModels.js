@@ -15,6 +15,11 @@ const Message = sequelize.define('message', {
             key: "id"
         }
     },
+    author_id: {type: DataTypes.INTEGER, required: true, references: {   
+        model: "user",
+        key: "id"
+        }
+    },
     text : { type: DataTypes.STRING, required: true},
     date : { type: DataTypes.DATE, required: true}
 
