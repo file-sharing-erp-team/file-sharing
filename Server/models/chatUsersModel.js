@@ -1,7 +1,7 @@
 const sequelize = require('../db')
 const {DataTypes} = require('sequelize')
 const User = require('./model_user')
-const Chat = require('./model_chat')
+const Chat = require('./chatModel')
  
  
 const ChatUser = sequelize.define('chat_user',  {
