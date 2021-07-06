@@ -11,6 +11,11 @@ const ChatUser = sequelize.define('chat_user',  {
             key: "id"
         }
     },
+    author_id: {type: DataTypes.INTEGER, required: true, references: {   
+        model: User,
+        key: "id"
+        }
+    },
     user_id: {type: DataTypes.INTEGER, required: true, references: {   
             model: User,
             key: "id"
