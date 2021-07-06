@@ -4,6 +4,7 @@ import { MyRequestCard } from '../components/MyRequestCard';
 import {useHttp} from '../context/hooks/http.hook' 
 import { AuthContext } from '../context/Auth.context';
 import { toast } from 'react-toastify';
+import { RequestsList } from '../components/RequestsList';
 
 export const ReqPage = () => {
     document.title = "FileSharing - Мои заявки"
@@ -18,7 +19,7 @@ export const ReqPage = () => {
             const data = await request(`/file_sharing/docs/getDocs`, 'GET', null, {
                 Authorization: `Bearer ${token} `
              })
-            setInfo(data)
+            setInfo(data.userDocs)
         }catch(e){
             toast.error(e)
         }
@@ -35,9 +36,9 @@ export const ReqPage = () => {
                 <Navig />
             </header>
             <br />
-            <div className="container row mx-auto" backgroundColor="white" height="100vh" width="80vw" style={{backgroundColor: "white", borderRadius: "5px",height:"85vh", overflow: "auto"}}>
+            <div className="container row mx-auto" height="100vh" width="80vw" style={{backgroundColor: "white", borderRadius: "5px",height:"85vh", overflow: "auto"}}>
                 
-                
+                {!loading && info && <RequestsList requests={info} />}
                 
             </div>
         </div>
