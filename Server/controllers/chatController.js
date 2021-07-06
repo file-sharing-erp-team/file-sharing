@@ -2,6 +2,7 @@ const ApiError = require('../error/error')
 const Chat = require('../models/chatModel')
 const ChatUsers = require('../models/chatUsersModel')
 const User = require('../models/model_user')
+const jwt = require('jsonwebtoken')
 
 class ChatController {
 
