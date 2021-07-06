@@ -5,7 +5,8 @@ const User = require('../models/model_user')
 
 class DocController {
 
-    //* СОЗДАТЬ ЗАЯВКУ
+    //* СОЗДАТЬ ЗАЯВКУ PUT
+    //* /file_sharing/docs/create
     //TODO ПРИВЯЗАТЬ СОЗДАНИЕ И СОХРАНЕНИЕ ФАЙЛА
 
     async createDoc (req,res,next) {
@@ -23,11 +24,11 @@ class DocController {
     }
 
 
-    //* ПОЛУЧИТЬ ВСЕ ЗАЯВКИ ПО ID ПОЛЬЗОВАТЕЛЯ (АДМИНКА)
-
+    //* ПОЛУЧИТЬ ВСЕ ЗАЯВКИ ПО ID ПОЛЬЗОВАТЕЛЯ (АДМИНКА) GET 
+    //* /file_sharing/docs/getDocsByUserId
     async getDocsByUserId (req, res, next) {
-        //? const {userID} = req.headers    //в случае если id пользователя в хедере, раскоментить эту строчку
-        const {userID} = req.body           //?в случае если id в хедере, закоментить 
+        const {userID} = req.headers            //? в случае если id пользователя в хедере, раскоментить эту строчку
+        //const {userID} = req.body             //? в случае если id в хедере, закоментить 
         if (!userID) {
             return next(ApiError.badRequest('Некорректные данные'))
         }
@@ -39,8 +40,8 @@ class DocController {
         return res.status(200).json({userDocs})
     }
 
-    //* ПОЛУЧИТЬ СВОИ ЗАЯВКИ (ПО ТОКЕНУ) (ДЛЯ ПОЛЬЗОВАТЕЛЯ)
-
+    //* ПОЛУЧИТЬ СВОИ ЗАЯВКИ (ПО ТОКЕНУ) (ДЛЯ ПОЛЬЗОВАТЕЛЯ) GET 
+    //* /file_sharing/docs/getDocs
     async getUserDocs (req, res, next) {
         const token = req.headers.authorization.split(' ')[1]
         if(!token) {

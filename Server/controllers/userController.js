@@ -13,6 +13,8 @@ const generateJwt = (id, login,role) => {
 
 class UserController {
 
+    //* /file_sharing/user/register
+    //* POST после этот запрос будет убран
     async register (req,res,next) {
         const {login, password,group_id,first_name,middle_name,last_name,role} = req.body
         if (!login || !password || !group_id || !first_name || !middle_name ||!last_name ||!role) {
@@ -27,6 +29,8 @@ class UserController {
         return res.status(200).json({user})
     }
 
+    //* POST
+    //* /file_sharing/user/login
     async login (req,res,next) {
         const {login, password} = req.body
         const user = await User.findOne({where: {login}})
@@ -41,8 +45,13 @@ class UserController {
         return res.json({token: token, userId: user.id, role: user.role})
     }
 
+    //* GET
+    //* /file_sharing/user/auth
     async check (req,res, next){
         const token = generateJwt(req.user.id, req.user.email, req.user.role)
+        if(!token) {
+            return next(ApiError.badRequest('Ошибка токена')) 
+        }
         return res.json({token})
     }
 }
