@@ -3,7 +3,7 @@ const User = require('./model_user')
 const {DataTypes} = require('sequelize')
  
 const Chat = sequelize.define('chat', {
-    id: {type: DataTypes.INTEGER, primaryKey: true},
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement:true},
     chat_name: { type: DataTypes.STRING, required: true, unique: false},
     author_id: {type: DataTypes.INTEGER, required: true, references: {   
         model: User,
