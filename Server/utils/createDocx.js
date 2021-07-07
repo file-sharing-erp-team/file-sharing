@@ -16,10 +16,15 @@ class CreateDocument {
                 }
             ]
         })
-    
-        docx.Packer.toBuffer(doc).then((buffer)=>{
-            fs.writeFileSync("MyDocument.docx", buffer);
-        })
+        
+        
+         docx.Packer.toBuffer(doc).then((buffer) => {
+            fs.writeFileSync("My Document.docx", buffer);
+        });
+            
+        const file = fs.readFileSync("My Document.docx")
+        return file
+       
     }
 }
 

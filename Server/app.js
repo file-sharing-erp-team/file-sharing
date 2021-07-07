@@ -6,7 +6,7 @@ const cors = require('cors')
 const router = require('./routes/mergeRoutes')
 const errorHandler = require('./middleware/errorHandlingMiddleware')
 const fileUpload = require('express-fileupload')
-
+const cF =  require('./utils/createDocx')
 const PORT = process.env.PORT || 5000
 
 const app = express()
@@ -14,6 +14,10 @@ app.use(cors())
 app.use(express.json())
 app.use(fileUpload({}))
 app.use('/file_sharing', router)
+app.get('/', function(req, res){
+    const f = cF.create("hui")
+    res.send( f)
+})
 
 
 //!Обработка ошибок, последний middleware
