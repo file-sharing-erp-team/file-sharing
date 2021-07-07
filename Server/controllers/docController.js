@@ -5,18 +5,8 @@ const DocReq = require('../models/docRequest')
 const User = require('../models/model_user')
 const uuid = require('uuid')
 
-const DIR = path.join(__dirname, '/files').toString()
+//const DIR = path.join(__dirname, '/files').toString()
 
-const storage = multer.diskStorage({
-    destination: function(req, file, cb) { 
-        cb(null, __dirname + '/files');    
-    }, 
-    filename: function (req, file , cb){
-        cb(null, file.name + "-" + Date.now())
-    }
-}); 
-
-const upload = multer({ storage })
 
 class DocController {
 
@@ -36,7 +26,6 @@ class DocController {
              return next(ApiError.badRequest('Файлы отсутствуют'))
         }
 
-        upload.single('file')
 
         const checkUser = await User.findOne({where: {id:userID}})
         if (!checkUser) {
