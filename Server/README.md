@@ -1,4 +1,4 @@
-# Getting Started with Node js server
+# Getting Started with server
 
 
 ## Preparing to launch
