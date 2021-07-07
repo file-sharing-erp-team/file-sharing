@@ -4,6 +4,7 @@ const Doc = require('../models/docModel')
 const DocReq = require('../models/docRequest')
 const User = require('../models/model_user')
 const uuid = require('uuid')
+const sequelize = require('../db')
 
 //const DIR = path.join(__dirname, '/files').toString()
 
@@ -15,14 +16,15 @@ class DocController {
     //TODO ПРИВЯЗАТЬ СОЗДАНИЕ И СОХРАНЕНИЕ ФАЙЛА
 
     async createDoc (req,res,next) {
-        console.log(req.files)
-        //const file = req.body.files.toArray();
-        console.log(req.body)
+        
         const {type , userID, firstName, lastName, middleName, phone, group} = req.body
         if (!type || !userID || !firstName || !lastName || !middleName ||!phone ||!group) {
             return next(ApiError.badRequest('Некорректные данные'))
         }
 
+        const files = req.files.files
+        console.log(files)
+       
         
         if(!files) {
              return next(ApiError.badRequest('Файлы отсутствуют'))
@@ -34,18 +36,23 @@ class DocController {
             return next(ApiError.badRequest('Пользователя не существует'))
         }
 
-        const fname = checkUser.id + '_' + uuid.v4() + '.jpg'
+       let doc;
 
-        const route = `http://localhost:5000/files${fname}`
+        const docReq = await DocReq.create({type:type, user_id:checkUser.id}) //заполняем docRequest 
+        
+        for(let i = 0; i < files.length; i++) {
+            const file = files[i]
+            const fname = checkUser.id + '_' + uuid.v4() + '.jpg'
 
-        file.mv(`/files` + fname, function(err) {
-            if(err) {
-                return next(ApiError.internal('Ошибка сохранения файла'))
-            }
-        })
-
-        const doc = await Doc.create({file_name:fname, src:route, author_id:checkUser.id})
-        const docReq = await DocReq.create({type:type, user_id:checkUser.id, file_id:doc.id}) //заполняем docRequest 
+            const route = `http://localhost:5000/files${fname}`
+    
+            file.mv(`files/` + fname, function(err) {
+                if(err) {
+                    return next(ApiError.internal('Ошибка сохранения файла'))
+                }
+            })
+             doc = await Doc.create({file_name:fname, src:route, author_id:checkUser.id, reqId: docReq.id})
+        }
 
         return res.status(200).json({docReq, doc})       
     }
