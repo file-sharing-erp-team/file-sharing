@@ -68,8 +68,6 @@ export const CreateReqPage = () => {
         formData.append("group", form.groupId)
 
 
-        console.log({formData})
-
         axios.put('http://localhost:5000/file_sharing/docs/create',formData, {headers: {'Authorization': `Bearer ${token}`}})
         .then(res => {
             console.log(res)
