@@ -53,6 +53,28 @@ class AdmDocController {
         }
         return res.status(200).json({findByProcess})
     }
+
+    //* ОБНОВЛЕНИЕ СТАТУСА ЗАЯВКИ POST
+    //* /file_sharing/admDocs/updateDocsStatus
+    async updateStatus (req, res, next) {
+        const {id,status} = req.body
+        const updateStatus = DocReq.update({status:status}, {where: {id:id}})
+        if (!updateStatus) {
+            return next(ApiError.internal('Ошибка обновления статуса выполнения'))
+        }
+        return res.status(200).json({updateStatus})
+    }
+
+    //* ОБНОВЛЕНИЕ СТАТУСА ВЫПОЛНЕНИЯ ЗАЯВКИ (АКТИВНАЯ \ НЕ АКТИВНАЯ) POST
+    //* /file_sharing/admDocs/updateDocsProcess
+    async updateProcess (req, res, next) {
+        const {id,processed} = req.body
+        const updateStatus = DocReq.update({processed:processed}, {where: {id:id}})
+        if (!updateStatus) {
+            return next(ApiError.internal('Ошибка обновления статуса '))
+        }
+        return res.status(200).json({updateStatus})
+    }
     
 }
 
