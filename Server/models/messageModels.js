@@ -4,7 +4,7 @@ const User = require('./model_user')
 const Chat = require('./chatModel')
  
 const Message = sequelize.define('message', {
-    id: {type: DataTypes.INTEGER, primaryKey: true},
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement:true},
     chat_id: {type: DataTypes.INTEGER, required: true, references: {   
             model: Chat,
             key: "id"
