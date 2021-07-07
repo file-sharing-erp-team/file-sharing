@@ -15,10 +15,17 @@ export const DashBoard = () => {
     const getTickets = useCallback (
         async () => {
             try{
-                const data = await request('/file_sharing/docrequest/all', 'GET', null, {
+                const data = await request('/file_sharing/docs/getDocs', 'GET', null, {
                    Authorization: `Bearer ${token} `
                 })
                setTickets(data)
+               if({...data} !== null){
+                   console.log(true)
+               }
+               else{
+                console.log(false)
+               }
+              
             }
             catch (e){
                 toast.error(e.message)
@@ -33,19 +40,8 @@ export const DashBoard = () => {
     return(
         <div>
             <NavBar />
-            <div className="container row mx-auto" backgroundColor="white" height="100vh" width="80vw" style={{backgroundColor: "white", borderRadius: "5px",height:"85vh", overflow: "auto", marginTop: '2rem'}}>
-                {(() => {
-                    if(!loading && tickets){
-                        return(
-                            <TicketList tickets={tickets} />
-                        )
-                    }
-                    else{
-                       return(
-                            <div>Новых заявок нет</div>
-                       )
-                    }
-                })}
+            <div className="container row mx-auto" height="100vh" width="80vw" style={{backgroundColor: "white", borderRadius: "5px",height:"85vh", overflow: "auto", marginTop: '2rem'}}>
+                {!loading && tickets && <TicketList tickets={tickets} />}
             </div>
         </div>
     )

@@ -1,22 +1,24 @@
 import {TicketCard} from './TicketCard'
 
 export const TicketList = ({tickets}) => {
-    if(tickets.length === 0){
+    console.log(tickets)
+    if(tickets instanceof Array){
+       
         return(
             <>
-                <h4>Новых заявок нет</h4>
+                 {tickets.map(ticket => {
+                     return(
+                         <TicketCard ticket={ticket} />
+                     )
+                 })}
             </>
-        )
+         )
     }
     else{
         return(
-           <>
-            {tickets.map(ticket => {
-                return(
-                    <TicketCard ticket={ticket} />
-                )
-            })}
-           </>
+            <>
+                <h4 className="my-auto" style={{left: '-50%'}}>Новых заявок нет</h4>
+            </>
         )
     }
 }

@@ -1,6 +1,7 @@
 import {useContext} from 'react'
 import {AuthContext} from '../context/Auth.context'
 import {NavLink} from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 import { Navbar, Nav, Button, Dropdown, Form, Collapse } from 'bootstrap-4-react';
 
 export const Navig = () => {
@@ -8,6 +9,7 @@ export const Navig = () => {
     const {userId} = useContext(AuthContext)
     const userLink = "/user/" + userId
     const settingsLink = "/settings/" + userId
+    const history = useHistory()
     
     const searchHandler = event => {
         event.preventDefault()
@@ -16,6 +18,7 @@ export const Navig = () => {
     const logoutHandler = event => {
         event.preventDefault()
         auth.logout()
+        history.push('/auth')
     }
     return (
         <Navbar expand="lg" light bg="light">
@@ -40,7 +43,7 @@ export const Navig = () => {
               <Form.Input type="search" placeholder="Поиск..." mr="sm-2" />
               <Button outline success my="2 sm-0">Найти</Button>
             </Form>
-            
+            <Button className="ms-3" success my="2 sm-0" onClick={logoutHandler}>Выйти</Button>
           </Collapse>
         </Navbar>
       )

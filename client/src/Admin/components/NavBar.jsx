@@ -1,19 +1,17 @@
 import {useContext} from 'react'
 import {AuthContext} from '../../context/Auth.context'
-import {NavLink} from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 import { Navbar, Nav, Button, Dropdown, Form, Collapse } from 'bootstrap-4-react';
 
 export const NavBar = () => {
     const auth = useContext(AuthContext)
-    const {userId} = useContext(AuthContext)
-    const userLink = "/user/" + userId
-    const settingsLink = "/settings/" + userId
-    
+    const history = useHistory()
 
     const logoutHandler = event => {
-        event.preventDefault()
-        auth.logout()
-    }
+      event.preventDefault()
+      auth.logout()
+      history.push('/auth')
+  }
     return (
         <Navbar expand="lg" light bg="light">
           <Navbar.Brand href="/my">
@@ -28,11 +26,12 @@ export const NavBar = () => {
               <Nav.Item active>
                 <Nav.Link href="/post">Почта</Nav.Link>
               </Nav.Item>
+              <Nav.Item active>
+                <Nav.Link href="/data-settings">Управление данными</Nav.Link>
+              </Nav.Item>
             </Navbar.Nav>
             <Form inline my="2 lg-0" onSubmit={logoutHandler}>
-              
-                <Button type="submit">Выйти</Button>
-              
+              <Button className="ms-3" success my="2 sm-0" onClick={logoutHandler}>Выйти</Button>
             </Form>
           </Collapse>
         </Navbar>

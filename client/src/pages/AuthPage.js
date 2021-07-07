@@ -29,7 +29,7 @@ export const AuthPage = () => {
             const data = await request('/file_sharing/user/login', 'POST', {...form})
             console.log(data)
             auth.login(data.token, data.userId, data.role)
-            if(!!data.role){
+            if(data.role === 1){
                 history.push('/admin')
             }
             else{

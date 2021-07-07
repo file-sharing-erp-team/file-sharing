@@ -53,13 +53,26 @@ export const CreateReqPage = () => {
         e.preventDefault()
 
         const formData = new FormData();
-        formData.append('files', files)
-        formData.append('data', form)
+        console.log({...files})
+        //const arFiles = Object.keys(files).map((key) => files[key])
+       
+        for(let i = 0; i < files.length; i++) {
+            formData.append('files', files[i])
+        }
+        formData.append("userID", userId)
+        formData.append("type", form.type)
+        formData.append("firstName", form.firstName)
+        formData.append("lastName", form.lastName)
+        formData.append("middleName", form.middleName)
+        formData.append("phone", form.phoneNumber)
+        formData.append("group", form.groupId)
 
-        console.log(formData.getAll)
 
-        axios.put('http://localhost:5000/file_sharing/docs/create', formData, {headers: {'Authorization': `Bearer ${token}`}})
+        console.log({formData})
+
+        axios.put('http://localhost:5000/file_sharing/docs/create',formData, {headers: {'Authorization': `Bearer ${token}`}})
         .then(res => {
+            console.log(res)
             toast.success(res.message, {
                 position: "bottom-right",
                 autoClose: 5000,
