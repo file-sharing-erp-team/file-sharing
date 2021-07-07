@@ -3,6 +3,20 @@ const jwt = require('jsonwebtoken')
 const Doc = require('../models/docModel')
 const DocReq = require('../models/docRequest')
 const User = require('../models/model_user')
+const uuid = require('uuid')
+
+const DIR = path.join(__dirname, '/files').toString()
+
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) { 
+        cb(null, __dirname + '/files');    
+    }, 
+    filename: function (req, file , cb){
+        cb(null, file.name + "-" + Date.now())
+    }
+}); 
+
+const upload = multer({ storage })
 
 class DocController {
 
@@ -11,17 +25,38 @@ class DocController {
     //TODO ПРИВЯЗАТЬ СОЗДАНИЕ И СОХРАНЕНИЕ ФАЙЛА
 
     async createDoc (req,res,next) {
+        
         const {type , userID, firstName, lastName, middleName, phone, group} = req.body
         if (!type || !userID || !firstName || !lastName || !middleName ||!phone ||!group ||!files) {
             return next(ApiError.badRequest('Некорректные данные'))
         }
+
+        const file = req.files.files;
+        if(!files) {
+             return next(ApiError.badRequest('Файлы отсутствуют'))
+        }
+
+        upload.single('file')
+
         const checkUser = await User.findOne({where: {id:userID}})
         if (!checkUser) {
             return next(ApiError.badRequest('Пользователя не существует'))
         }
-        const docReq = await DocReq.create({user_id:userID}) //заполняем docRequest 
-        //const doc = await Doc.create({id:files})  //! Раскоментить когда разберемся со всеми данными файла
-        return res.status(200).json({docReq})       //! Добавить doc
+
+        const fname = checkUser.id + '_' + uuid.v4() + '.jpg'
+
+        const route = `http://localhost:5000/files${fname}`
+
+        file.mv(`/files` + fname, function(err) {
+            if(err) {
+                return next(ApiError.internal('Ошибка сохранения файла'))
+            }
+        })
+
+        const doc = await Doc.create({file_name:fname, src:route, author_id:checkUser.id})
+        const docReq = await DocReq.create({type:type, user_id:checkUser.id, file_id:doc.id}) //заполняем docRequest 
+
+        return res.status(200).json({docReq, doc})       
     }
 
 

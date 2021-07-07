@@ -15,7 +15,7 @@ class UserController {
 
     //! ВРЕМЕННАЯ ЗАТЫЧКА
     //* Регистрация пользователя (АДМИНКА) POST
-    //* /file_sharing/admUser/registerUser
+    //* /file_sharing/user/registerUser
     async register (req,res,next) {
         const {login, password,group_id,first_name,middle_name,last_name,role} = req.body
         if (!login || !password || !group_id || !first_name || !middle_name ||!last_name ||!role) {
