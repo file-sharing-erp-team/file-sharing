@@ -7,7 +7,9 @@
 
 2.  Create database with name `file_sharing`
 
-3. Create `.env` file ( if not exist ) with this content, so that each value is on a new line:
+3.  In the project directory, you should run: `cd Server`
+
+4. Create `.env` file ( if not exist ) with this content, so that each value is on a new line:
 
     * `PORT=`
     * `DB_NAME=`
@@ -17,10 +19,10 @@
     * `DB_PORT=`
     * `SECRET_KEY=`
     
-3.  Enter database connection details and your SECRET_KEY in `.env` file immediately after the `=` sign. 
+5.  Enter database connection details and your SECRET_KEY in `.env` file immediately after the `=` sign. 
 If your database was created with a different name, enter your database_name opposite `DB_NAME=`.
 
-4.  In the project directory, you should run: `cd Server`
+
 
 ## Launch
 
