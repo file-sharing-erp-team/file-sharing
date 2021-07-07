@@ -1,4 +1,5 @@
 # File-Sharing-ERP
 ### Web-app for IATE NRU MepHi filesharing system
 
-### `cd Server` and `npm run server` to start Server
+* CLIENT - https://github.com/file-sharing-erp-team/file-sharing-erp/tree/main/client
+* SERVER - https://github.com/file-sharing-erp-team/file-sharing-erp/tree/main/Server
