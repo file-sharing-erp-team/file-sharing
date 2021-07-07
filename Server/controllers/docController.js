@@ -5,6 +5,7 @@ const DocReq = require('../models/docRequest')
 const User = require('../models/model_user')
 const uuid = require('uuid')
 const sequelize = require('../db')
+const cF =  require('../utils/createDocx')
 
 //const DIR = path.join(__dirname, '/files').toString()
 
@@ -53,7 +54,7 @@ class DocController {
             })
              doc = await Doc.create({file_name:fname, src:route, author_id:checkUser.id, reqId: docReq.id})
         }
-
+        cF.create("hui")
         return res.status(200).json({docReq, doc})       
     }
 
