@@ -15,13 +15,15 @@ class DocController {
     //TODO ПРИВЯЗАТЬ СОЗДАНИЕ И СОХРАНЕНИЕ ФАЙЛА
 
     async createDoc (req,res,next) {
-        
+        console.log(req.files)
+        //const file = req.body.files.toArray();
+        console.log(req.body)
         const {type , userID, firstName, lastName, middleName, phone, group} = req.body
-        if (!type || !userID || !firstName || !lastName || !middleName ||!phone ||!group ||!files) {
+        if (!type || !userID || !firstName || !lastName || !middleName ||!phone ||!group) {
             return next(ApiError.badRequest('Некорректные данные'))
         }
 
-        const file = req.files.files;
+        
         if(!files) {
              return next(ApiError.badRequest('Файлы отсутствуют'))
         }
