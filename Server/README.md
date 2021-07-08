@@ -22,11 +22,13 @@
 5.  Enter database connection details and your SECRET_KEY in `.env` file immediately after the `=` sign. 
 If your database was created with a different name, enter your database_name opposite `DB_NAME=`.
 
+6.  In the project directory, you should run: `npm i`
+
 
 
 ## Launch
 
-To launch the app enter: `npm run server`. 
+To launch the app enter: `npm run server` in the project directory.
 > In this mode, the server will automatically reboot after saving the project files
 
 ## Links
