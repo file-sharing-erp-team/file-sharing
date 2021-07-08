@@ -71,7 +71,7 @@ class DocController {
         if (!checkUser) {
             return next(ApiError.badRequest('Пользователя не существует'))
         }
-        const userDocs = await DocReq.findOne({where: {user_id:userID}})
+        const userDocs = await DocReq.findAll({where: {user_id:userID}})
         return res.status(200).json({userDocs})
     }
 
