@@ -203,8 +203,8 @@ class CreateDocument {
             await fs.writeFileSync(`files/${fullname}_матпомощь.docx`, buffer);
         });
             
-        //const file = fs.readFileSync(`files/${fullname}_матпомощь.docx`)
-        //return file
+        const file = `${fullname}_матпомощь.docx`
+        return file
        
     }
 }
