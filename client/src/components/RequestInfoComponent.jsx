@@ -18,6 +18,7 @@ export const RequestInfoComponent = ({info}) => {
                         <p className="row-3">Прикрепленные документы: <br /> <DocumentComponent reqId={info.id} /></p>
                     </Card.Body>
                     <Card.Footer >
+                        <Button style={{float: "left"}} variant="primary">Открыть чат</Button>
                        <Button style={{float: "right"}} variant="danger">Отменить заявление</Button>
                     </Card.Footer>
                 </Card>
