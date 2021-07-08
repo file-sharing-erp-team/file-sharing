@@ -1,4 +1,5 @@
 import {TypeToTitle} from './TypeToTitle'
+import {StatusIconComponent} from './StatusIconComponent'
 import { Card } from 'bootstrap-4-react'; 
 
 export const MyRequestCard = ({requestInfo}) => {
@@ -17,10 +18,10 @@ export const MyRequestCard = ({requestInfo}) => {
                 <Card.Body>
                     <Card.Title><TypeToTitle type={requestInfo.type} /></Card.Title>
                     <br/>
-                    <Card.Subtitle>{requestInfo.status === 1 & <i class="bi bi-hourglass-split"></i>}</Card.Subtitle>
+                    <Card.Subtitle><StatusIconComponent status={requestInfo.status} /></Card.Subtitle>
                     <br/>
                     
-                    <Card.Link style={{fontSize:'25px'}} href="/">Подробнее</Card.Link>
+                    <Card.Link style={{fontSize:'15px'}} href="/">На страницу заявки <i class="fas fa-long-arrow-alt-right"></i> </Card.Link>
                 </Card.Body>
             </Card>
         </>
