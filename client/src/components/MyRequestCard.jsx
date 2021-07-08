@@ -19,7 +19,7 @@ export const MyRequestCard = ({requestInfo}) => {
                 <Card.Body>
                     <Card.Title><TypeToTitle type={requestInfo.type} /></Card.Title>
                     <br/>
-                    <Card.Subtitle><StatusIconComponent status={requestInfo.status} /></Card.Subtitle>
+                    <Card.Subtitle>Статус: <StatusIconComponent status={requestInfo.status} /></Card.Subtitle>
                     <br/>
                     
                     <Card.Link style={{fontSize:'15px'}} href={link}>На страницу заявки <i class="fas fa-long-arrow-alt-right"></i> </Card.Link>
