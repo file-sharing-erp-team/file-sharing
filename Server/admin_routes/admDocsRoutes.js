@@ -7,8 +7,8 @@ router.get('/getDocsByUserId',checkRole(1), AdminDocsController.getDocsByUserId)
 router.get('/getDocByStatus',checkRole(1), AdminDocsController.getDocByStatus)    //* /file_sharing/admDocs/getDocByStatus
 router.get('/getUnfulfilledDocs',checkRole(1), AdminDocsController.getUnfulfilledDocs)    //* /file_sharing/admDocs/getUnfulfilledDocs
 router.get('/getDocsByProcess',checkRole(1), AdminDocsController.getDocsByProcess)    //* /file_sharing/admDocs/getDocsByProcess
-router.get('/updateDocsStatus',checkRole(1), AdminDocsController.updateStatus)    //* /file_sharing/admDocs/updateDocsStatus
-router.get('/updateDocsProcess',checkRole(1), AdminDocsController.updateProcess)    //* /file_sharing/admDocs/updateDocsProcess
+router.post('/updateDocsStatus',checkRole(1), AdminDocsController.updateStatus)    //* /file_sharing/admDocs/updateDocsStatus
+router.post('/updateDocsProcess',checkRole(1), AdminDocsController.updateProcess)    //* /file_sharing/admDocs/updateDocsProcess
 
 
 module.exports = router

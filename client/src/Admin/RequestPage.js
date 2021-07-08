@@ -9,16 +9,17 @@ import {RequestPageCard} from './components/RequestPageCard'
 
 export const RequestPage = () => {
     const _id = useParams().id
+    document.title = "FileSharing - Заявка"
     const [info, setInfo] = useState(null)
     const {loading, error, request, clearError} = useHttp()
     const {token, userId} = useContext(AuthContext)
 
     const getInfo = useCallback(async () => {
         try{
-            const data = await request(`/file_sharing/docrequest/${_id}`, 'GET', null, {
+            const data = await request(`/file_sharing/docs/getDocReq/${_id}`, 'GET', null, {
                 Authorization: `Bearer ${token} `
              })
-            setInfo(data)
+            setInfo(data.checkDoc)
         }catch(e){
             toast.error(e)
         }

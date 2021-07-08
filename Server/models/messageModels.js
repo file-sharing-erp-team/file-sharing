@@ -5,24 +5,15 @@ const Chat = require('./chatModel')
  
 const Message = sequelize.define('message', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement:true},
-    chat_id: {type: DataTypes.INTEGER, required: true, references: {   
-            model: Chat,
-            key: "id"
-        }
+    chat_id: {type: DataTypes.INTEGER, required: true
     },
-    user_id: {type: DataTypes.INTEGER, required: true, references: {   
-            model: User,
-            key: "id"
-        }
+    user_id: {type: DataTypes.INTEGER, required: true
     },
-    author_id: {type: DataTypes.INTEGER, required: true, references: {   
-        model: User,
-        key: "id"
-        }
+    author_id: {type: DataTypes.INTEGER, required: true
     },
 
     text : { type: DataTypes.STRING, required: true},
-    date : { type: DataTypes.DATE, required: true}
+    
 
 })
 

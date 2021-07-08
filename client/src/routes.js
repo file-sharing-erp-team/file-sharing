@@ -6,6 +6,7 @@ import {RequestInfoPage} from './pages/RequestInfoPage'
 import { AUTH_ROUTE, REQ_ROUTE, ERR_ROUTE, CREATE_ROUTE , ADMIN_ROUTE, INFO_ROUTE} from "./utils/consts";
 import { CreationPage } from "./pages/CreationPage";
 import { DashBoard } from "./Admin/DashBoard";
+import { RequestPage } from "./Admin/RequestPage";
 
 
 
@@ -45,6 +46,11 @@ export const adminRoutes = [
         path: ADMIN_ROUTE,
         Component: DashBoard,
         id: 1
+    },
+    {
+        path: ADMIN_ROUTE  + INFO_ROUTE + "/:id",
+        Component: RequestPage,
+        id: 2
     }
 ]
 

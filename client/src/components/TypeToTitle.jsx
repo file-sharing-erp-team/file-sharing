@@ -6,4 +6,11 @@ export const TypeToTitle = ({type}) => {
             </>
         )
     }
+    if(type === 2){
+        return(
+            <>
+                Повыш. степ.
+            </>
+        )
+    }
 }
