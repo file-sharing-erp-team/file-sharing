@@ -21,7 +21,7 @@ class AdmUserController {
         return res.status(200).json({user})
     }
 
-    //* Удаление пользователя
+    //* Удаление пользователя DELETE
     //* /file_sharing/admUser/deleteUser
     async deleteUser (req, res, next) {
         const {userID} = req.body
@@ -37,10 +37,13 @@ class AdmUserController {
             return next(ApiError.internal('Ошибка удаление пользователя'))
         }
         const allUsers = User.findAll({raw: true})
+        if (!allUsers) {
+            return next(ApiError.internal('Ошибка получения пользователей'))
+        }
         return res.status(200).json({allUsers})
     }
 
-    //* Удаление пользователя
+    //* Удаление пользователя DELETE
     //* /file_sharing/admUser/deleteUserByFIO
     async deleteUserByFIO (req, res, next) {
         const {first_name,middle_name,last_name} = req.body
@@ -56,8 +59,17 @@ class AdmUserController {
         if (!deleteUser) {
             return next(ApiError.internal('Ошибка удаление пользователя'))
         }
-        //return res.status(200).json({message:"Пользователь удален"})
+        return res.status(200).json({message:"Пользователь удален"})
+    }
+
+
+    //* Получение всех пользователей GET
+    //* /file_sharing/admUser/getAllUsers
+    async getAllUsers (req, res, next) {
         const allUsers = User.findAll({raw: true})
+        if (!checkUser) {
+            return next(ApiError.badRequest('Пользователя не существует'))
+        }
         return res.status(200).json({allUsers})
     }
 
