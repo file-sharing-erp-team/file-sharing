@@ -2,8 +2,8 @@ const docx = require('docx')
 const fs = require('fs')
 
 class CreateDocument {
-    create(coursenum, groupname, fullname, phonenumber,costof,reasonfor,datefor,numofreas){
- 
+    create(fullname, groupname,coursenum,phonenumber, costof ,reasonfor ,datefor ,numofreas){
+
         const doc = new docx.Document({
             sections: [
                 {
@@ -11,8 +11,10 @@ class CreateDocument {
                         new docx.Paragraph({
                             text:"В стипендиальную комиссию ИАТЭ НИЯУ МИФИ",
                             font: "Times New Roman",
-                            alignment: docx.AlignmentType.RIGHT,
-                            indent:{left : 224} 
+                            
+                            indent: {
+                                left: 4480,
+                            } 
                         }),
                         new docx.Paragraph({
                             children: [
@@ -22,14 +24,18 @@ class CreateDocument {
                                  new docx.TextRun(groupname)
                             ],
                             font: "Times New Roman",
-                            alignment: docx.AlignmentType.RIGHT,
-                            indent:{left : 224} 
+                            
+                            indent: {
+                                left: 4480,
+                            }
                         }),
                         new docx.Paragraph({
                             text: fullname,
                             font: "Times New Roman",
-                            alignment: docx.AlignmentType.RIGHT,
-                            indent:{left : 224} 
+                            
+                            indent: {
+                                left: 4480,
+                            } 
                         }),
                         new docx.Paragraph({
                             children: [
@@ -37,8 +43,10 @@ class CreateDocument {
                                 new docx.TextRun(phonenumber)
                             ],
                             font: "Times New Roman",
-                            alignment: docx.AlignmentType.RIGHT,
-                            indent: 224
+                            
+                            indent: {
+                                left: 4480,
+                            }
                         }),
                         new docx.Paragraph({
                             children:[
@@ -48,8 +56,12 @@ class CreateDocument {
                                     size: 24
                                 })                                
                             ],
- 
+
                             font: "Times New Roman",
+                            spacing: {
+                                before: 240,
+                                after: 120,
+                            },
                             alignment: docx.AlignmentType.CENTER
                         }),
                         new docx.Paragraph({
@@ -112,7 +124,7 @@ class CreateDocument {
                         alignment: docx.AlignmentType.LEFT 
                     }),
                     new docx.Paragraph({
-                        text: "    (должность ходатайствующего)                      (подпись)            (расшифровка подписи)",
+                        text: "    (должность ходатайствующего)                            (подпись)            (расшифровка подписи)",
                         font: "Times New Roman",
                         alignment: docx.AlignmentType.LEFT 
                     }),
@@ -142,12 +154,12 @@ class CreateDocument {
                         alignment: docx.AlignmentType.LEFT 
                      }), 
                      new docx.Paragraph({
-                        text: "обучающихся                                             _________________________(________________)",
+                        text: "обучающихся                                                  _________________________(________________)",
                         font: "Times New Roman",
                         alignment: docx.AlignmentType.LEFT 
                      }), 
                      new docx.Paragraph({
-                        text: "Староста группы                                         _________________________(________________)",
+                        text: "Староста группы                                               _________________________(________________)",
                         font: "Times New Roman",
                         alignment: docx.AlignmentType.LEFT 
                      }),
@@ -160,16 +172,16 @@ class CreateDocument {
                 }
             ]
         })
- 
- 
+    
+          
          docx.Packer.toBuffer(doc).then((buffer) => {
             fs.writeFileSync("My Document.docx", buffer);
         });
- 
+            
         const file = fs.readFileSync("My Document.docx")
         return file
- 
+       
     }
 }
- 
+
 module.exports = new CreateDocument()
