@@ -16,11 +16,11 @@ export const RequestInfoPage = () => {
 
     const getInfo = useCallback(async () => {
         try{
-            const data = await request(`/file_sharing/docs/getDoc/${id}`, 'GET', null, {
+            const data = await request(`/file_sharing/docs/getDocReq/${id}`, 'GET', null, {
                 Authorization: `Bearer ${token} `
              })
-            setInfo(data.userDocs)
-            console.log(data.userDocs)
+            setInfo(data.checkDoc)
+            console.log(data.checkDoc)
             
         }catch(e){
             toast.error(e)
