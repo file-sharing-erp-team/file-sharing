@@ -17,8 +17,8 @@ class DocController {
 
     async createDoc (req,res,next) {
         
-        const {type , userID, firstName, lastName, middleName, phone, group} = req.body
-        if (!type || !userID || !firstName || !lastName || !middleName ||!phone ||!group) {
+        const {type , userID, firstName, lastName, middleName, phone, group, course} = req.body
+        if (!type || !userID || !firstName || !lastName || !middleName ||!phone ||!group ||!course) {
             return next(ApiError.badRequest('Некорректные данные'))
         }
 
@@ -51,12 +51,23 @@ class DocController {
                     return next(ApiError.internal('Ошибка сохранения файла'))
                 }
             })
-             doc = await Doc.create({file_name:fname, src:route, author_id:checkUser.id, reqId: docReq.id})
+            doc = await Doc.create({file_name:fname, src:route, author_id:checkUser.id, reqId: docReq.id})
         }
-        const newFile = cF.create(`${checkUser.last_name} ${checkUser.first_name} ${checkUser.middle_name}`,`${checkUser.group}`, `3`, `${checkUser.phone}`, "5000", "reason", "date", "13")
-        const route = `http://localhost:5000/files${newFile}`
-        const newDoc = await Doc.create({file_name:newFile, src:route, author_id:checkUser.id, reqId: docReq.id})
-        return res.status(200).json({docReq, doc})       
+        if(type === 1) {
+            const newFile = cF.create(`${checkUser.last_name} ${checkUser.first_name} ${checkUser.middle_name}`,`${checkUser.group}`, `${course}`, `${checkUser.phone}`, "5000", "reason", "date", "13")
+            const route = `http://localhost:5000/files${newFile}`
+            const newDoc = await Doc.create({file_name:newFile, src:route, author_id:checkUser.id, reqId: docReq.id})
+            return res.status(200).json({docReq, doc}) 
+        }
+        else if(type === 2) {
+            const newFile = cF.createMoney(`${course}`,`${checkUser.group}`,`${checkUser.last_name} ${checkUser.first_name} ${checkUser.middle_name}`, "date")
+            const route = `http://localhost:5000/files${newFile}`
+            const newDoc = await Doc.create({file_name:newFile, src:route, author_id:checkUser.id, reqId: docReq.id})
+            return res.status(200).json({docReq, doc}) 
+        }
+        return res.status(200).json({docReq, doc}) 
+        
+        
     }
 
 

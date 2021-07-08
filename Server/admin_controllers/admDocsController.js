@@ -75,7 +75,7 @@ class AdmDocController {
         }
         return res.status(200).json({updateStatus})
     }
-    
+
 }
 
 module.exports = new AdmDocController()
