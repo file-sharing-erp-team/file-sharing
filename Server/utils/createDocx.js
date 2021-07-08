@@ -333,10 +333,10 @@ class CreateDocument {
  
  
          docx.Packer.toBuffer(doc).then((buffer) => {
-            fs.writeFileSync("My Document.docx", buffer);
+            fs.writeFileSync(`files/${fullname}_повыш.docx`, buffer);
         });
  
-        const file = fs.readFileSync("My Document.docx")
+        const file = `${fullname}_повыш.docx`
         return file
     }
 }
