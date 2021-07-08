@@ -11,7 +11,7 @@ export const AuthorComponent = ({authorId}) => {
 
     const getName = useCallback(
         async () => {
-            const userName = await request(`/filesharing/user/get/${authorId}`, 'GET', null, {
+            const userName = await request(`/file_sharing/user/getInfo/${authorId}`, 'GET', null, {
                 Authorization: `Bearer ${token}`
             })
             setName(userName.firstName)
@@ -39,6 +39,7 @@ export const AuthorComponent = ({authorId}) => {
                     <AuthorName name={name} lastName={lastName}/>
                 </>
             }
+            {!name && <>Заявитель не найден</>}
         </>
     )
 }
