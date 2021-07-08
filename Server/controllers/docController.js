@@ -74,6 +74,23 @@ class DocController {
         const userDocs = await DocReq.findOne({where: {user_id:userID}})
         return res.status(200).json({userDocs})
     }
+
+    //* ПОЛУЧИТЬ ЗАЯВКУ ПО ID GET 
+    //* /file_sharing/docs/getDocReq/:id
+    async getById (req, res, next) {
+        const token = req.headers.authorization.split(' ')[1]
+        if(!token) {
+            return res.status(401).json({message: "Токен не валиден"})
+        }
+        const decoded = jwt.verify(token, process.env.SECRET_KEY)
+        const reqId = req.params.id
+        const checkDoc = await DocReq.findOne({where: {id: reqId}})
+        if (!checkDoc) {
+            return next(ApiError.badRequest('Документ не найден'))
+        }
+        
+        return res.status(200).json({checkDoc})
+    }
 }
 
 module.exports = new DocController()
