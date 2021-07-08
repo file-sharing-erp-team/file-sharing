@@ -40,6 +40,27 @@ class AdmUserController {
         return res.status(200).json({allUsers})
     }
 
+    //* Удаление пользователя
+    //* /file_sharing/admUser/deleteUserByFIO
+    async deleteUserByFIO (req, res, next) {
+        const {first_name,middle_name,last_name} = req.body
+        if (!first_name || !last_name ||! middle_name) {
+            return next(ApiError.badRequest('Некорректные данные'))
+        }
+
+        const checkUser = await User.findOne({where: {first_name:first_name} && {middle_name:middle_name} && {last_name:last_name}})
+        if (!checkUser) {
+            return next(ApiError.badRequest('Пользователя не существует'))
+        }
+        const deleteUser = await User.destroy({where:{id:checkUser.id}})
+        if (!deleteUser) {
+            return next(ApiError.internal('Ошибка удаление пользователя'))
+        }
+        //return res.status(200).json({message:"Пользователь удален"})
+        const allUsers = User.findAll({raw: true})
+        return res.status(200).json({allUsers})
+    }
+
 }
 
 module.exports = new AdmUserController()
