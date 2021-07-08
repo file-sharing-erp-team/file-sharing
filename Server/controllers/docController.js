@@ -91,6 +91,24 @@ class DocController {
         
         return res.status(200).json({checkDoc})
     }
+
+    
+    //* ПОЛУЧИТЬ СПИСОК ДОКУМЕНТОВ ЗАЯВКИ ПО ID
+    //* /file_sharing/docs/getDocById/:id
+    async getDocById (req, res, next) {
+        const token = req.headers.authorization.split(' ')[1]
+        if(!token) {
+            return res.status(401).json({message: "Токен не валиден"})
+        }
+        const decoded = jwt.verify(token, process.env.SECRET_KEY)
+        const reqId = req.params.id
+        const checkDoc = await Doc.findAll({where: {reqId: reqId}})
+        if (!checkDoc) {
+            return next(ApiError.badRequest('Документ не найден'))
+        }
+        
+        return res.status(200).json({checkDoc})
+    }
 }
 
 module.exports = new DocController()
