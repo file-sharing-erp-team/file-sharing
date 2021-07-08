@@ -59,15 +59,17 @@ class CreateDocument {
 
                             font: "Times New Roman",
                             spacing: {
-                                before: 240,
-                                after: 120,
+                                before: 280,
+                                after: 160,
                             },
                             alignment: docx.AlignmentType.CENTER
                         }),
                         new docx.Paragraph({
                             text: "Прошу оказать мне  материальную поддержку в ",
                             font: "Times New Roman",
-                            alignment: docx.AlignmentType.LEFT // КРАСНАЯ СТРОКА?
+                            indent: {
+                                left: 60,
+                            } 
                         }),
                         new docx.Paragraph({
                             children: [
@@ -92,7 +94,10 @@ class CreateDocument {
                                  new docx.TextRun(datefor)
                             ],
                             font: "Times New Roman",
-                            alignment: docx.AlignmentType.LEFT
+                            alignment: docx.AlignmentType.LEFT,
+                            spacing: {
+                                after: 280,
+                            },
                         }),
                         new docx.Paragraph({
                             children: [
@@ -102,6 +107,7 @@ class CreateDocument {
                         ],
                         font: "Times New Roman",
                         alignment: docx.AlignmentType.LEFT
+                       
                     }),
                     new docx.Paragraph({
                         text: "государственной социальной стипендии, стипендии нуждающимся студентам и социальной  ",
@@ -111,7 +117,10 @@ class CreateDocument {
                     new docx.Paragraph({
                         text: "поддержке обучающихся  НИЯУ МИФИ ",
                         font: "Times New Roman",
-                        alignment: docx.AlignmentType.LEFT 
+                        alignment: docx.AlignmentType.LEFT,
+                        spacing: {
+                            after: 280,
+                        }, 
                     }),    
                     new docx.Paragraph({
                         text: "____________________________________ ",
@@ -124,29 +133,39 @@ class CreateDocument {
                         alignment: docx.AlignmentType.LEFT 
                     }),
                     new docx.Paragraph({
-                        text: "    (должность ходатайствующего)                            (подпись)            (расшифровка подписи)",
+                        text: "    (должность ходатайствующего)                               (подпись)            (расшифровка подписи)",
                         font: "Times New Roman",
                         alignment: docx.AlignmentType.LEFT 
                     }),
                    new docx.Paragraph({
                         text: "СОГЛАСОВАНО:",
                         font: "Times New Roman",
-                        alignment: docx.AlignmentType.LEFT 
+                        alignment: docx.AlignmentType.LEFT,
+                        spacing: {
+                            before: 280,
+                        }, 
                     }),
                     new docx.Paragraph({
                         text: "Заместитель директора                                       _________________________(Е.Г.Чуркин)",
                         font: "Times New Roman",
-                        alignment: docx.AlignmentType.LEFT 
+                        alignment: docx.AlignmentType.LEFT,
+                        spacing: {
+                            after: 160,
+                        }, 
                     }),
                     new docx.Paragraph({
                        text: "Председатель ",
                         font: "Times New Roman",
-                        alignment: docx.AlignmentType.LEFT 
+                        alignment: docx.AlignmentType.LEFT,
+                         
                     }), 
                     new docx.Paragraph({
                         text: "профсоюзного комитета                                    _________________________(Г.Е. Ткаченко) ",
                         font: "Times New Roman",
-                        alignment: docx.AlignmentType.LEFT 
+                        alignment: docx.AlignmentType.LEFT,
+                        spacing: {
+                            after: 160,
+                        }, 
                      }),
                      new docx.Paragraph({
                         text: "Председатель объединенного совета",
@@ -154,14 +173,20 @@ class CreateDocument {
                         alignment: docx.AlignmentType.LEFT 
                      }), 
                      new docx.Paragraph({
-                        text: "обучающихся                                                  _________________________(________________)",
+                        text: "обучающихся                                                         _________________________(________________)",
                         font: "Times New Roman",
-                        alignment: docx.AlignmentType.LEFT 
+                        alignment: docx.AlignmentType.LEFT,
+                        spacing: {
+                            after: 160,
+                        },
                      }), 
                      new docx.Paragraph({
-                        text: "Староста группы                                               _________________________(________________)",
+                        text: "Староста группы                                                     _________________________(________________)",
                         font: "Times New Roman",
-                        alignment: docx.AlignmentType.LEFT 
+                        alignment: docx.AlignmentType.LEFT,
+                        spacing: {
+                            after: 160,
+                        }, 
                      }),
                      new docx.Paragraph({
                         text: "Заместитель начальника отделения                        _________________________(________________)",
@@ -174,12 +199,12 @@ class CreateDocument {
         })
     
           
-         docx.Packer.toBuffer(doc).then((buffer) => {
-            fs.writeFileSync("My Document.docx", buffer);
+         docx.Packer.toBuffer(doc).then(async (buffer) => {
+            await fs.writeFileSync(`files/${fullname}_матпомощь.docx`, buffer);
         });
             
-        const file = fs.readFileSync("My Document.docx")
-        return file
+        //const file = fs.readFileSync(`files/${fullname}_матпомощь.docx`)
+        //return file
        
     }
 }

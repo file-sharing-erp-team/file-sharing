@@ -53,7 +53,7 @@ class DocController {
             })
              doc = await Doc.create({file_name:fname, src:route, author_id:checkUser.id, reqId: docReq.id})
         }
-        cF.create("hui")
+        cF.create(`${checkUser.last_name} ${checkUser.first_name} ${checkUser.middle_name}`,`${checkUser.group}`, `3`, `${checkUser.phone}`, "5000", "reason", "date", "13")
         return res.status(200).json({docReq, doc})       
     }
 
