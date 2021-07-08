@@ -22,6 +22,8 @@
 5.  Enter database connection details and your SECRET_KEY in `.env` file immediately after the `=` sign. 
 If your database was created with a different name, enter your database_name opposite `DB_NAME=`.
 
+6.  In the project directory, you should run: `npm i`
+
 
 
 ## Launch
