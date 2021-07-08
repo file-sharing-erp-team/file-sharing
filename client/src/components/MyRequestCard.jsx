@@ -5,6 +5,7 @@ import { Card } from 'bootstrap-4-react';
 export const MyRequestCard = ({requestInfo}) => {
     console.log(requestInfo )
     //const route = "/req/" + requestInfo.id
+    const link = "/info/" + requestInfo.id
     if(!requestInfo){
         return(
             <>
@@ -21,7 +22,7 @@ export const MyRequestCard = ({requestInfo}) => {
                     <Card.Subtitle><StatusIconComponent status={requestInfo.status} /></Card.Subtitle>
                     <br/>
                     
-                    <Card.Link style={{fontSize:'15px'}} href="/">На страницу заявки <i class="fas fa-long-arrow-alt-right"></i> </Card.Link>
+                    <Card.Link style={{fontSize:'15px'}} href={link}>На страницу заявки <i class="fas fa-long-arrow-alt-right"></i> </Card.Link>
                 </Card.Body>
             </Card>
         </>

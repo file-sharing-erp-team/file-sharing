@@ -2,7 +2,8 @@ import { AuthPage } from "./pages/AuthPage";
 import { ReqPage } from "./pages/ReqPage";
 import {Page404} from './pages/Page404'
 import {CreateReqPage} from './pages/CreateReqPage'
-import { AUTH_ROUTE, REQ_ROUTE, ERR_ROUTE, CREATE_ROUTE , ADMIN_ROUTE} from "./utils/consts";
+import {RequestInfoPage} from './pages/RequestInfoPage'
+import { AUTH_ROUTE, REQ_ROUTE, ERR_ROUTE, CREATE_ROUTE , ADMIN_ROUTE, INFO_ROUTE} from "./utils/consts";
 import { CreationPage } from "./pages/CreationPage";
 import { DashBoard } from "./Admin/DashBoard";
 
@@ -22,6 +23,11 @@ export const authRoutes = [
     {
         path: CREATE_ROUTE, 
         Component: CreationPage,
+        id: 3
+    },
+    {
+        path: INFO_ROUTE + "/:id", 
+        Component: RequestInfoPage,
         id: 3
     }
 ]

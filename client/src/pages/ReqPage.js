@@ -5,6 +5,7 @@ import {useHttp} from '../context/hooks/http.hook'
 import { AuthContext } from '../context/Auth.context';
 import { toast } from 'react-toastify';
 import { MyRequestList } from '../components/MyReqList';
+import {LoadingComponent} from '../components/LoadingComponent'
 
 export const ReqPage = () => {
     document.title = "FileSharing - Мои заявки"
@@ -39,7 +40,7 @@ export const ReqPage = () => {
             </header>
             <br />
             <div className="container row mx-auto" height="100vh" width="80vw" style={{backgroundColor: "white", borderRadius: "5px",height:"85vh", overflow: "auto"}}>
-                
+                {loading && <LoadingComponent />}
                 {!loading && info && <MyRequestList requests={{...info}} />}
                 
             </div>
