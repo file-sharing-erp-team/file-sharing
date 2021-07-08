@@ -15,7 +15,7 @@ app.use(express.json())
 app.use(fileUpload({}))
 app.use('/file_sharing', router)
 app.get('/', function(req, res){
-    cF.create("Дмитриев Максим Сергеевич", "ИС-Б18", "3", "79682852676", "3000", "Хочу", "27.01.2001", "15")
+    cF.createMoney("3", "ИС-Б18", "Дмитриев Максим Сергеевич", "27.01.2001")
     res.send("s")
 })
 

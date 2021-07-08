@@ -207,6 +207,138 @@ class CreateDocument {
         return file
        
     }
+
+    createMoney(coursenum, groupname, fullname,datefor){
+        const doc = new docx.Document({
+            sections: [
+                {
+                    children: [
+                        new docx.Paragraph({
+                            text:"В Стипендиальную комиссию ИАТЭ НИЯУ МИФИ",
+                            font: "Times New Roman",
+                            spacing: {
+                                after: 280,
+                            },
+ 
+                            indent: {
+                                left: 4480,
+                            } 
+                        }),
+                        new docx.Paragraph({
+                            text:"от студента(ки) ",
+                            font: "Times New Roman",
+                            spacing: {
+                                after: 280,
+                            },
+ 
+                            indent: {
+                                left: 4480,
+                            } 
+                        }),
+                        new docx.Paragraph({
+                            text: fullname,
+                            font: "Times New Roman",
+                            spacing: {
+                                after: 280,
+                            },
+                            indent: {
+                                left: 4480,
+                            } 
+                        }),
+                        new docx.Paragraph({
+                            children: [
+                                 
+                                 new docx.TextRun(coursenum),
+                                 new docx.TextRun(" курса "),
+                                 new docx.TextRun("\tгруппы "),
+                                 new docx.TextRun(groupname)
+                            ],
+                            font: "Times New Roman",
+                            spacing: {
+                                after: 160,
+                            },
+ 
+ 
+                            indent: {
+                                left: 4480,
+                            }
+                        }),
+                        new docx.Paragraph({
+                            children:[
+                                new docx.TextRun({
+                                    text:"ЗАЯВЛЕНИЕ",
+                                    bold: false,
+                                    size: 24
+                                })                                
+                            ],
+ 
+                            font: "Times New Roman",
+                            alignment: docx.AlignmentType.CENTER
+                        }),
+                        new docx.Paragraph({
+                            text: "Прошу рассмотреть возможность назначения мне в предстоящем семестре повышенной ",
+                            font: "Times New Roman",
+                            spacing: {
+                                after: 60,
+                            },
+                            indent: {
+                                left: 60,
+                            } 
+                        }),
+                        new docx.Paragraph({
+                            text: "государственной академической стипендии в соответствии с приказом Министерства образования  ",
+                            font: "Times New Roman",
+                            spacing: {
+                                after: 60,
+                            },
+                            alignment: docx.AlignmentType.LEFT 
+                        }),
+                        new docx.Paragraph({
+                            text: "и науки РФ от 27 декабря 2016 г. № 1663 ",
+                            font: "Times New Roman",
+                            spacing: {
+                                after: 60,
+                            },
+                            alignment: docx.AlignmentType.LEFT 
+                        }),
+                        new docx.Paragraph({
+                            children: [
+                                 new docx.TextRun("Дата " ),
+                                 new docx.TextRun(datefor)
+                            ],
+                            font: "Times New Roman",
+                            alignment: docx.AlignmentType.LEFT,
+                            spacing: {
+                                after: 160,
+                            },
+                        }),
+                        new docx.Paragraph({
+                            text: "_________________________/__________________ ",
+                            font: "Times New Roman",
+                            spacing: {
+                                after: 60,
+                            },
+                            alignment: docx.AlignmentType.LEFT 
+                        }),
+                    new docx.Paragraph({
+                        text: "Документы, подтверждающие основания для назначения повышенной стипендии прилагаю:  ",
+                        font: "Times New Roman",
+                        alignment: docx.AlignmentType.LEFT 
+                    }),    
+ 
+                    ]
+                }
+            ]
+        })
+ 
+ 
+         docx.Packer.toBuffer(doc).then((buffer) => {
+            fs.writeFileSync("My Document.docx", buffer);
+        });
+ 
+        const file = fs.readFileSync("My Document.docx")
+        return file
+    }
 }
 
 module.exports = new CreateDocument()
