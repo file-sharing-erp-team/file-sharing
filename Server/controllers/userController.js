@@ -56,6 +56,18 @@ class UserController {
         }
         return res.json({token})
     }
+
+    //* GET 
+    //* /file_sharing/user/getInfo/:id
+
+    async getInfo (req,res, next){
+        const userId = req.params.id
+        const user = await User.findOne({where: {id: userId}})
+        if(!user){
+            return next(ApiError.badRequest('Пользователь не найден')) 
+        }
+        return res.json({firstName: user.first_name, lastName: user.last_name})
+    }
 }
 
 module.exports = new UserController()
