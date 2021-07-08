@@ -44,7 +44,7 @@ class DocController {
             const file = files[i]
             const fname = checkUser.id + '_' + uuid.v4() + '.jpg'
 
-            const route = `http://localhost:5000/files${fname}`
+            const route = `http://localhost:5000/files/${fname}`
     
             file.mv(`files/` + fname, function(err) {
                 if(err) {
@@ -53,9 +53,7 @@ class DocController {
             })
              doc = await Doc.create({file_name:fname, src:route, author_id:checkUser.id, reqId: docReq.id})
         }
-        const newFile = cF.create(`${checkUser.last_name} ${checkUser.first_name} ${checkUser.middle_name}`,`${checkUser.group}`, `3`, `${checkUser.phone}`, "5000", "reason", "date", "13")
-        const route = `http://localhost:5000/files${newFile}`
-        const dxoc = await Doc.create({file_name:newFile, src:route, author_id:checkUser.id, reqId: docReq.id})
+        cF.create(`${checkUser.last_name} ${checkUser.first_name} ${checkUser.middle_name}`,`${checkUser.group}`, `3`, `${checkUser.phone}`, "5000", "reason", "date", "13")
         return res.status(200).json({docReq, doc})       
     }
 
