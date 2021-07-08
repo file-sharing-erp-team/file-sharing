@@ -1,14 +1,14 @@
-import {RequestCard} from './RequestCard'
+import {MyRequestCard} from './MyRequestCard'
 
-export const RequestsList = ({requests}) => {
-    console.log(requests.length)
+export const MyRequestList = ({requests}) => {
+    console.log(requests)
     if(typeof requests === Array ){
         return(
             <>
                 {requests.map(request => {
                     return(
                         <>
-                            <RequestCard key={request.title} info={request} />
+                            <MyRequestCard key={request.title} info={request} />
                         </>
                     )
                 })}
@@ -18,7 +18,7 @@ export const RequestsList = ({requests}) => {
     else{
         return(
             <>
-                <RequestCard key={requests.id} info={requests} />
+                <h3><MyRequestCard key={requests.id} requestInfo={requests} /></h3>
             </>
         )
         
