@@ -15,10 +15,10 @@ export const DashBoard = () => {
     const getTickets = useCallback (
         async () => {
             try{
-                const data = await request('/file_sharing/docs/getDocs', 'GET', null, {
+                const data = await request('/file_sharing/admDocs/getDocsByProcess', 'GET', null, {
                    Authorization: `Bearer ${token} `
                 })
-               setTickets(data)
+               setTickets(data.findByProcess)
                if({...data} !== null){
                    console.log(true)
                }
