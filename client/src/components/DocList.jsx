@@ -6,7 +6,7 @@ export const DocList = ({docs}) => {
             <>
             {docs.map((doc) => {
                 return(
-                    <DocCard />
+                    <DocCard docInfo={doc}/>
                 )
             })}
             </>

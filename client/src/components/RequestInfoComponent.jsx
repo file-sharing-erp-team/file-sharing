@@ -15,7 +15,7 @@ export const RequestInfoComponent = ({info}) => {
                         <h3 className="row-3">Заявление на <TypeToTitle type={info.type}/> #{info.id}</h3>
                         <p className="row-3">Статус: <StatusIconComponent status={info.status} /> </p>
                         <p className="row-3">Отправитель: <AuthorComponent authorId={info.user_id}/></p>
-                        <p className="row-3">Прикрепленные документы: <DocumentComponent reqId={info.id} /></p>
+                        <p className="row-3">Прикрепленные документы: <br /> <DocumentComponent reqId={info.id} /></p>
                     </Card.Body>
                     <Card.Footer >
                        <Button style={{float: "right"}} variant="danger">Отменить заявление</Button>

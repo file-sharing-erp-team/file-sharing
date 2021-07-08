@@ -2,13 +2,13 @@ import {MyRequestCard} from './MyRequestCard'
 
 export const MyRequestList = ({requests}) => {
     console.log(requests)
-    if(typeof requests === Array ){
+    if(requests ){
         return(
             <>
-                {requests.map(request => {
+                {Object.keys(requests).map(key => {
                     return(
                         <>
-                            <MyRequestCard key={request.title} info={request} />
+                            <MyRequestCard key={requests[key].id} requestInfo={requests[key]} />
                         </>
                     )
                 })}

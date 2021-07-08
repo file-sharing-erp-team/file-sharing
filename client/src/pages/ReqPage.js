@@ -41,7 +41,7 @@ export const ReqPage = () => {
             <br />
             <div className="container row mx-auto" height="100vh" width="80vw" style={{backgroundColor: "white", borderRadius: "5px",height:"85vh", overflow: "auto"}}>
                 {loading && <LoadingComponent />}
-                {!loading && info && <MyRequestList requests={{...info}} />}
+                {!loading && info && <MyRequestList requests={info} />}
                 
             </div>
         </div>
