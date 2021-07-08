@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import {useParams} from 'react-router-dom'
 import { Form, InputGroup } from 'bootstrap-4-react';
 import { Button , Toast} from 'react-bootstrap'
@@ -9,6 +9,7 @@ import {useAuth} from '../context/hooks/auth.hook'
 import axios from 'axios'
 import 'react-toastify/dist/ReactToastify.css';
 import {toast} from 'react-toastify'
+import Dropzone from 'react-dropzone';
 
 
 export const CreateReqPage = () => {
@@ -17,6 +18,7 @@ export const CreateReqPage = () => {
     const {token, role, userId} = useAuth()
     const [show, setShow] = useState(false);
     const message = useMessage()
+    const dropRef = useRef()
     const [form, setForm] = useState( {
         type: useParams().type,
         userId: userId,
@@ -44,9 +46,9 @@ export const CreateReqPage = () => {
         //clearError()
     }, [error])
 
-    const fileUpload = event => {
-        console.log(event)
-        setFiles(event.target.files)
+    const fileUpload = (files) => {
+        //console.log(event)
+        setFiles(files)
     }
 
     const createReq = e => {
@@ -162,9 +164,28 @@ export const CreateReqPage = () => {
                         </Form.Group>
                         
                         <Form.Group >
-                            <Form.Group >
-                                <label htmlFor="files">Необходимые документы</label>
-                                <Form.File id="files" multiple onChange={fileUpload}/>
+                            <Form.Group>
+                                <Dropzone onDrop={fileUpload}>
+                                
+                                        {({ getRootProps, getInputProps }) => (
+                                        <div {...getRootProps({ className: 'drop-zone' })} ref={dropRef}>
+                                            <input {...getInputProps()} />
+                                            <p>Drag and drop a file OR click here to select a file</p>
+                                            {files && (
+                                            <div style={{fontSize:'13px'}}>
+                                                {Object.keys(files).map((key) => {
+                                                    return(
+                                                        <p>
+                                                            {files[key].name}
+                                                        </p>
+                                                    )
+                                                })}
+                                            </div>
+                                            )}
+                                        </div>
+                                        )}
+                                    
+                                </Dropzone>
                             </Form.Group>
                             <Form.Group >
                                 <Button variant="primary" type="submit" className="col  align-self-center">
