@@ -44,7 +44,7 @@ class DocController {
             const file = files[i]
             const fname = checkUser.id + '_' + uuid.v4() + '.jpg'
 
-            const route = `http://localhost:5000/files/${fname}`
+            const route = `http://localhost:5000/files${fname}`
     
             file.mv(`files/` + fname, function(err) {
                 if(err) {
