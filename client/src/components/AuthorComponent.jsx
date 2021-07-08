@@ -16,6 +16,7 @@ export const AuthorComponent = ({authorId}) => {
             })
             setName(userName.firstName)
             setLastName(userName.lastName)
+            console.log(userName)
         },
         [token, authorId , request]
     )
@@ -39,7 +40,7 @@ export const AuthorComponent = ({authorId}) => {
                     <AuthorName name={name} lastName={lastName}/>
                 </>
             }
-            {!name && <>Заявитель не найден</>}
+           
         </>
     )
 }
