@@ -28,7 +28,7 @@ If your database was created with a different name, enter your database_name opp
 
 ## Launch
 
-To launch the app enter: `npm run server`. 
+To launch the app enter: `npm run server` in the project directory.
 > In this mode, the server will automatically reboot after saving the project files
 
 ## Links
