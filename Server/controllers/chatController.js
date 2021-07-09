@@ -46,7 +46,7 @@ class ChatController {
         if (!candidateChats) {
             return next(ApiError.internal('Нет чатов'))
         }
-        return res.status(200).json({chats})  
+        return res.status(200).json({chats:candidateChats})  
     }
 
     //* DELETE

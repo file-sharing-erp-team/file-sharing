@@ -32,6 +32,12 @@ export const RequestPageCard = ({info}) => {
             if(res.status === "Отклонено"){
                 res.status = 0
             }
+            else if(res.status ==="В обработке"){
+                res.status = 2
+            }
+            else if(res.status ==="Выполнено"){
+                res.status = 3
+            }
             console.log({...res})
             const data = await request('/file_sharing/admDocs/updateDocsStatus', 'POST', {...res}, 
             {

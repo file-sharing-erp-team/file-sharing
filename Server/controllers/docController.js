@@ -38,7 +38,7 @@ class DocController {
 
        let doc;
 
-        const docReq = await DocReq.create({type:type, user_id:checkUser.id}) //заполняем docRequest 
+        const docReq = await DocReq.create({type:type, user_id:checkUser.id, status: 1}) //заполняем docRequest 
         
         for(let i = 0; i < files.length; i++) {
             const file = files[i]

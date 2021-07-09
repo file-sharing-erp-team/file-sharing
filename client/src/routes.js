@@ -3,10 +3,12 @@ import { ReqPage } from "./pages/ReqPage";
 import {Page404} from './pages/Page404'
 import {CreateReqPage} from './pages/CreateReqPage'
 import {RequestInfoPage} from './pages/RequestInfoPage'
-import { AUTH_ROUTE, REQ_ROUTE, ERR_ROUTE, CREATE_ROUTE , ADMIN_ROUTE, INFO_ROUTE} from "./utils/consts";
+import { AUTH_ROUTE, REQ_ROUTE, ERR_ROUTE, CREATE_ROUTE , ADMIN_ROUTE, INFO_ROUTE, MESSAGES_ROUTE} from "./utils/consts";
 import { CreationPage } from "./pages/CreationPage";
 import { DashBoard } from "./Admin/DashBoard";
 import { RequestPage } from "./Admin/RequestPage";
+import { MessagesList } from "./Admin/MessagesList";
+import { ChatPage } from "./pages/ChatPage";
 
 
 
@@ -30,6 +32,11 @@ export const authRoutes = [
         path: INFO_ROUTE + "/:id", 
         Component: RequestInfoPage,
         id: 3
+    },
+    {
+        path: MESSAGES_ROUTE,
+        Component: ChatPage,
+        id: 4
     }
 ]
 
@@ -51,6 +58,11 @@ export const adminRoutes = [
         path: ADMIN_ROUTE  + INFO_ROUTE + "/:id",
         Component: RequestPage,
         id: 2
+    },
+    {
+        path: ADMIN_ROUTE + MESSAGES_ROUTE,
+        Component: MessagesList,
+        id: 3
     }
 ]
 

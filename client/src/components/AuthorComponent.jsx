@@ -4,6 +4,7 @@ import {useHttp} from '../context/hooks/http.hook'
 import {AuthorName} from './AuthorName'
 
 export const AuthorComponent = ({authorId}) => {
+    
     const [name , setName] = useState('')
     const [lastName , setLastName] = useState('')
     const {request, loading} = useHttp()
@@ -16,7 +17,6 @@ export const AuthorComponent = ({authorId}) => {
             })
             setName(userName.firstName)
             setLastName(userName.lastName)
-            console.log(userName)
         },
         [token, authorId , request]
     )

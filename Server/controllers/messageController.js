@@ -14,19 +14,32 @@ class MessageController {
             return res.status(401).json({message: "Токен не валиден"})
         }
         const decoded = jwt.verify(token, process.env.SECRET_KEY)
-
+        console.log(req.body)
+        
         const {chat_id, user_id, text} = req.body
         if (!chat_id || !user_id || !text) {
             return next(ApiError.badRequest('Некорректные данные'))
         }
+
+        const candidateChat = await Chat.findOne({where: {id: chat_id}})
+        if(!candidateChat) {
+            return next(ApiError.internal('Чат не существует'))
+        }
         
-        const message = await Message.create({chat_id, user_id, author_id:decoded.id, text})
+        let message;
+        if(candidateChat.user_id === decoded.id){
+            message = await Message.create({chat_id, user_id: candidateChat.user_id, author_id:decoded.id, text})
+        }
+        else{
+            message = await Message.create({chat_id, user_id: decoded.id, author_id:candidateChat.user_id, text})
+        }
+        
         if(!message) {
             return next(ApiError.internal('Ошибка отправки сообщения'))
         }
-        const lastUsername = await User.findOne({where: {id:userID}})
+        const lastUsername = await User.findOne({where: {id:decoded.id}})
         const lastMessage = lastUsername.first_name + ' - ' + text
-        const ChatMessage = Chat.update({last_message:lastMessage}, {where: {chat_id:chat_id}})
+        const ChatMessage = Chat.update({last_message:lastMessage}, {where: {id:chat_id}})
         if (!ChatMessage) {
             return next(ApiError.internal('Ошибка последнего сообщения'))
         }
@@ -41,7 +54,7 @@ class MessageController {
         if (!chat_id) {
             return next(ApiError.badRequest('Некорректные данные'))
         }
-        const showMessages = await Message.findAll({chat_id:chat_id})
+        const showMessages = await Message.findAll({where: {chat_id:chat_id}})
         return res.status(200).json({showMessages})
     }
 }

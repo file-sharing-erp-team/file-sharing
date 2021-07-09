@@ -6,13 +6,17 @@ import {AuthContext} from './context/Auth.context'
 import {useAuth} from './context/hooks/auth.hook' 
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import {useChat} from './context/hooks/chat.hook'
 
 import './styles/index.scss'
+import { ChatContext } from './context/ChatContext'
 
 function App() {
   const {login, logout, token, role, userId, ready} = useAuth()
+  const {push, pop, chatId} = useChat()
   const {loading} = useHttp()
   const isAuthenticated = !!token
+  const isChatOpen = !!chatId
   let isAdmin = false
   if(role === 1){
     isAdmin = true
@@ -21,7 +25,9 @@ function App() {
     <AuthContext.Provider value={{
       token, login, logout, userId, role, isAuthenticated
     }}>
-      
+      <ChatContext.Provider value={{
+        push, pop, chatId, isChatOpen
+      }}>
       <div className="App">
         <BrowserRouter>
           {!loading && <AppRouter isAuth={isAuthenticated} role={isAdmin}/>}
@@ -38,6 +44,7 @@ function App() {
                       pauseOnHover 
         />
       </div>
+      </ChatContext.Provider>
     </AuthContext.Provider>
   );
 }

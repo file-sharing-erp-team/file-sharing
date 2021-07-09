@@ -14,7 +14,7 @@ export const NavBar = () => {
   }
     return (
         <Navbar expand="lg" light bg="light">
-          <Navbar.Brand href="/my">
+          <Navbar.Brand href="/admin">
             File Sharing
           </Navbar.Brand>
           <Navbar.Toggler target="#navbarSupportedContent" />
@@ -24,7 +24,7 @@ export const NavBar = () => {
                 <Nav.Link href="/admin">Главная</Nav.Link>
               </Nav.Item>
               <Nav.Item active>
-                <Nav.Link href="/post">Почта</Nav.Link>
+                <Nav.Link href="/admin/messages">Чаты</Nav.Link>
               </Nav.Item>
               <Nav.Item active>
                 <Nav.Link href="/data-settings">Управление данными</Nav.Link>
