@@ -2,12 +2,18 @@ const ApiError = require('../error/error')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const User = require('../models/model_user')
+const Chat = require('../models/chatModel')
+const DocReq = require('../models/docRequest')
+const Message = require('../models/messageModels')
+const Doc = require('../models/docModel')
+const {Op} = require('sequelize')
 
 class AdmUserController {
 
     //* Регистрация пользователя (АДМИНКА) POST
     //* /file_sharing/admUser/registerUser
     async register (req,res,next) {
+        console.log(req.body)
         const {login, password,group_id,first_name,middle_name,last_name,role} = req.body
         if (!login || !password || !group_id || !first_name || !middle_name ||!last_name ||!role) {
             return next(ApiError.badRequest('Некорректный email или password'))
@@ -32,6 +38,28 @@ class AdmUserController {
         if (!checkUser) {
             return next(ApiError.badRequest('Пользователя не существует'))
         }
+        const deleteChat = await Chat.destroy({where: {[Op.or]:[{author_id: userID},{user_id: userID}]}})
+        if (!deleteChat) {
+            return next(ApiError.badRequest('Ошибка удаления чатов'))
+        }
+
+
+        const deleteDocReq = await DocReq.destroy({where:{user_id:userID}})
+        if (!deleteDocReq) {
+            return next(ApiError.badRequest('Ошибка удаления заявок'))
+        }
+
+        const deleteMessages = await Message.destroy({where:{[Op.or]:[{user_id:userID}, {author_id: userID}]}})
+        if (!deleteMessages) {
+            return next(ApiError.badRequest('Ошибка удаления сообщений'))
+        }
+
+        const deleteDocs = await Doc.destroy({where:{user_id:userID}})
+        if (!deleteDocs) {
+            return next(ApiError.badRequest('Ошибка удаления документов'))
+        }
+
+
         const deleteUser = await User.destroy({where:{id:userID}})
         if (!deleteUser) {
             return next(ApiError.internal('Ошибка удаление пользователя'))
@@ -66,8 +94,8 @@ class AdmUserController {
     //* Получение всех пользователей GET
     //* /file_sharing/admUser/getAllUsers
     async getAllUsers (req, res, next) {
-        const allUsers = User.findAll({raw: true})
-        if (!checkUser) {
+        const allUsers = await User.findAll({raw: true})
+        if (!allUsers) {
             return next(ApiError.badRequest('Пользователя не существует'))
         }
         return res.status(200).json({allUsers})

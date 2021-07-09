@@ -27,7 +27,7 @@ export const NavBar = () => {
                 <Nav.Link href="/admin/messages">Чаты</Nav.Link>
               </Nav.Item>
               <Nav.Item active>
-                <Nav.Link href="/data-settings">Управление данными</Nav.Link>
+                <Nav.Link href="/admin/users">Управление данными</Nav.Link>
               </Nav.Item>
             </Navbar.Nav>
             <Form inline my="2 lg-0" onSubmit={logoutHandler}>

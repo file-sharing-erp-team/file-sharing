@@ -2,7 +2,7 @@ import {TypeToTitle} from './TypeToTitle'
 import {StatusIconComponent} from './StatusIconComponent'
 import { Card } from 'bootstrap-4-react'; 
 import { Button} from 'react-bootstrap'
-import {ChatComponent} from './ChatComponent'
+//import {ChatComponent} from './ChatComponent'
 import {AuthorComponent} from './AuthorComponent'
 import { DocumentComponent } from './DocumentComponent';
 import { useHistory } from 'react-router-dom';
