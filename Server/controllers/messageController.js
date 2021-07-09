@@ -28,10 +28,10 @@ class MessageController {
         
         let message;
         if(candidateChat.user_id === decoded.id){
-            message = await Message.create({chat_id, user_id: candidateChat.user_id, author_id:decoded.id, text})
+            message = await Message.create({chat_id, user_id: decoded.id, author_id:candidateChat.author_id, text})
         }
         else{
-            message = await Message.create({chat_id, user_id: decoded.id, author_id:candidateChat.user_id, text})
+            message = await Message.create({chat_id, user_id: candidateChat.author_id, author_id:decoded.id, text})
         }
         
         if(!message) {

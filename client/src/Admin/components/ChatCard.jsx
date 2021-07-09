@@ -7,8 +7,9 @@ export const ChatCard = ({chat}) => {
 
     const curChat = useContext(ChatContext)
 
-    const chatHandler = () => {
+    const chatHandler = async () => {
         curChat.push(chat.id)
+        window.location.reload()
     }
     console.log(chat)
     if(!chat){
