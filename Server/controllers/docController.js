@@ -16,7 +16,7 @@ class DocController {
     //TODO ПРИВЯЗАТЬ СОЗДАНИЕ И СОХРАНЕНИЕ ФАЙЛА
 
     async createDoc (req,res,next) {
-        
+        console.log(req.body)
         const {type , userID, firstName, lastName, middleName, phone, group, course} = req.body
         if (!type || !userID || !firstName || !lastName || !middleName ||!phone ||!group ||!course) {
             return next(ApiError.badRequest('Некорректные данные'))
@@ -53,13 +53,13 @@ class DocController {
             })
             doc = await Doc.create({file_name:fname, src:route, author_id:checkUser.id, reqId: docReq.id})
         }
-        if(type === 1) {
+        if(type === '1') {
             const newFile = cF.create(`${checkUser.last_name} ${checkUser.first_name} ${checkUser.middle_name}`,`${checkUser.group}`, `${course}`, `${checkUser.phone}`, "5000", "reason", "date", "13")
             const route = `http://localhost:5000/files/${newFile}`
             const newDoc = await Doc.create({file_name:newFile, src:route, author_id:checkUser.id, reqId: docReq.id})
             return res.status(200).json({docReq, doc}) 
         }
-        else if(type === 2) {
+        else if(type === '2') {
             const newFile = cF.createMoney(`${course}`,`${checkUser.group}`,`${checkUser.last_name} ${checkUser.first_name} ${checkUser.middle_name}`, "date")
             const route = `http://localhost:5000/files/${newFile}`
             const newDoc = await Doc.create({file_name:newFile, src:route, author_id:checkUser.id, reqId: docReq.id})

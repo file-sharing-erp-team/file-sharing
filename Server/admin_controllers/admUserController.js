@@ -43,7 +43,6 @@ class AdmUserController {
             return next(ApiError.badRequest('Ошибка удаления чатов'))
         }
 
-
         const deleteDocReq = await DocReq.destroy({where:{user_id:userID}})
         if (!deleteDocReq) {
             return next(ApiError.badRequest('Ошибка удаления заявок'))

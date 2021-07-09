@@ -26,7 +26,8 @@ export const CreateReqPage = () => {
         lastName: '',
         middleName: '',
         groupId: '',
-        phoneNumber: ''
+        phoneNumber: '',
+        course: ''
     })
 
     const [files, setFiles] = useState([])
@@ -68,6 +69,7 @@ export const CreateReqPage = () => {
         formData.append("middleName", form.middleName)
         formData.append("phone", form.phoneNumber)
         formData.append("group", form.groupId)
+        formData.append("course", form.course)
 
 
         axios.put('http://localhost:5000/file_sharing/docs/create',formData, {headers: {'Authorization': `Bearer ${token}`}})
@@ -147,6 +149,12 @@ export const CreateReqPage = () => {
                                     +7
                                 </InputGroup.PrependText>
                                 <Form.Input type="text" id="phoneNumber" placeholder="Номер мобильного телефона..." name="phoneNumber" onChange={changeHandler}/>
+                                
+                            </InputGroup>
+                            <label htmlFor="course">Номер курса</label>
+                            <InputGroup mb="2">
+                                
+                                <Form.Input type="text" id="course" placeholder="Номер курса..." name="course" onChange={changeHandler}/>
                                 
                             </InputGroup>
                             
