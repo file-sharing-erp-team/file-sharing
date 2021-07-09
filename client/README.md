@@ -5,7 +5,7 @@ If you want to run this app install [Node JS](http://nodejs.org).
 ## About
 
 This project is powered by Create React App and Bootstrap 4.
-Created by Maksim Dmitriev @sigarachi
+Created by [Maksim Dmitriev @sigarachi](https://github.com/sigarachi).
 
 ### `Admin Panel`
 
