@@ -39,10 +39,6 @@ export const Navig = () => {
                 <Nav.Link href="/messages">Почта</Nav.Link>
               </Nav.Item>
             </Navbar.Nav>
-            <Form inline my="2 lg-0" onSubmit={searchHandler}>
-              <Form.Input type="search" placeholder="Поиск..." mr="sm-2" />
-              <Button outline success my="2 sm-0">Найти</Button>
-            </Form>
             <Button className="ms-3" success my="2 sm-0" onClick={logoutHandler}>Выйти</Button>
           </Collapse>
         </Navbar>

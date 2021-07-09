@@ -60,26 +60,7 @@ export const DashBoard = () => {
         <div>
             <NavBar />
             <div className="container mx-auto" height="100vh" width="80vw" style={{backgroundColor: "white", borderRadius: "5px",height:"85vh", overflow: "auto", marginTop: '2rem'}}>
-                <Form  style={{marginTop:'1rem', width:'100%'}}>
-                    <Form.Group className="mx-auto">
-                        <Form.Row className="mx-auto">
-                            <Col>
-                                <Form.Control as="select" name="option">
-                                    <option>Статус выполнения</option>
-                                    <option>Новые</option>
-                                    <option>Активные</option>
-                                </Form.Control>
-                            </Col>
-                            <Col>
-                                <Form.Control type="text" id="search" placeholder="Поиск" name="groupId"/>
-                            </Col>
-                            <Col>
-                                <Button variant="success" onClick={searchHandler}>Найти</Button>
-                            </Col>
-                        </Form.Row>
-                        
-                    </Form.Group>
-                </Form>
+                
                 {!loading && tickets && <TicketList tickets={tickets} />}
             </div>
         </div>
