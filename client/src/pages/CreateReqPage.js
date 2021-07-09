@@ -101,7 +101,7 @@ export const CreateReqPage = () => {
 
     console.log(useParams().type)
     //Мат помощь
-    if(useParams().type === '1'){
+    if(useParams().type){
         return(
             <div>
                 
@@ -111,7 +111,7 @@ export const CreateReqPage = () => {
                 
                 <div className="container mx-auto" style={{backgroundColor: "white", borderRadius: "5px", height:"85vh", overflow: "auto", marginTop: '2rem'}}>
                     <Form style={{marginTop: '1rem'}} onSubmit={createReq}>
-                        <h3>Заявление на Материальную Поддержку</h3>
+                        <h3>Новое заявление</h3>
                         <br />
                         <InputGroup mb="3">
                             <InputGroup.PrependText>
@@ -160,15 +160,7 @@ export const CreateReqPage = () => {
                             
                         </Form.Group>
                         <Form.Group style={{color:'red'}}>
-                            <p>Необходимые документы</p>
-                            <ul>
-                                <li>
-                                    Трудовые книги родителей или опекунов
-                                </li>
-                                <li>
-                                    Пенсионное удостоверение (при наличии)
-                                </li>
-                            </ul>
+                            
                         </Form.Group>
                         
                         <Form.Group >
