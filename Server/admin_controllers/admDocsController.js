@@ -5,6 +5,7 @@ const DocReq = require('../models/docRequest')
 const User = require('../models/model_user')
 const Chat = require('../models/chatModel')
 const Message = require('../models/messageModels')
+const {Op} = require('sequelize')
 
 class AdmDocController {
 
@@ -38,7 +39,7 @@ class AdmDocController {
     //* ПОЛУЧЕНИЕ ВСЕХ ЗАЯВОК КРОМЕ ВЫПОЛНЕННЫХ (АДМИНКА) GET
     //* /file_sharing/admDocs/getUnfulfilledDocs
     async getUnfulfilledDocs (req, res, next) {
-        const ShowUnfulfilledDoc = await DocReq.findAll({status:0} || {status:1} || {status:2})
+        const ShowUnfulfilledDoc = await DocReq.findAll({where:{[Op.or]: [{status:0} , {status:1} , {status:2}]}})
         if(!ShowUnfulfilledDoc) {
             return next(ApiError.badRequest('Все заявки выполнены или они не найдены'))
         }
@@ -68,8 +69,8 @@ class AdmDocController {
         if (!secUser) {
             return next(ApiError.badRequest('Пользователя не существует'))
         } 
-        const candidateChat = await Chat.findOne({where: {author_id:userId, user_id:senderId} 
-            || {author_id:senderId,user_id:userId}})
+        const candidateChat = await Chat.findOne({where: {[Op.or]: [{author_id:userId, user_id:senderId} 
+           , {author_id:senderId,user_id:userId}]}})
 
         //const updateStatus = DocReq.update({status:status}, {where: {id:id}})
         if (candidateChat) {

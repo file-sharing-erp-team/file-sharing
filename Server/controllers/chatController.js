@@ -3,6 +3,7 @@ const Chat = require('../models/chatModel')
 //? const ChatUsers = require('../models/chatUsersModel')
 const User = require('../models/model_user')
 const jwt = require('jsonwebtoken')
+const {Op} = require('sequelize')
 
 class ChatController {
 
@@ -24,8 +25,8 @@ class ChatController {
             return next(ApiError.badRequest('Пользователя не существует'))
         } 
 
-        const candidateChat = await Chat.findOne({where: {author_id:userID, user_id:decodedToken.id} 
-            || {author_id:decodedToken.id,user_id:userID}})
+        const candidateChat = await Chat.findOne({where: {[Op.or]:[{author_id:userID, user_id:decodedToken.id} 
+            ,{author_id:decodedToken.id,user_id:userID}]}})
         if (candidateChat) {
             return next(ApiError.badRequest('Такой чат уже существует'))
         }
@@ -42,7 +43,8 @@ class ChatController {
         const token = req.headers.authorization.split(' ')[1] // Bearer asfasnfkajsfnjk
         const decodedToken = jwt.verify(token, process.env.SECRET_KEY)
 
-        const candidateChats = await Chat.findAll({where:{author_id:decodedToken.id} || {user_id:decodedToken.id}})
+        const candidateChats = await Chat.findAll({where:{[Op.or]:[{author_id:decodedToken.id},{user_id:decodedToken.id}]}})
+        console.log(candidateChats)
         if (!candidateChats) {
             return next(ApiError.internal('Нет чатов'))
         }
@@ -60,12 +62,12 @@ class ChatController {
             return next(ApiError.badRequest('Некорректные данные'))
         }
 
-        const deleteChat = await Chat.destroy({where: {author_id:userID, user_id:decodedToken.id} 
-            || {author_id:decodedToken.id,user_id:userID}})
+        const deleteChat = await Chat.destroy({where: {[Op.or]: [{author_id:userID, user_id:decodedToken.id} 
+            ,{author_id:decodedToken.id,user_id:userID}]}})
         if (!deleteChat) {
             return next(ApiError.badRequest('Ошибка удаления чата'))
         }
-        const chats = await Chat.findAll({where:{author_id:decodedToken.id} || {user_id:decodedToken.id}})
+        const chats = await Chat.findAll({where:{[Op.or]:[{author_id:decodedToken.id} , {user_id:decodedToken.id}]}})
         if (!chats) {
             return next(ApiError.internal('Нет чатов'))
         }
@@ -78,8 +80,8 @@ class ChatController {
         const token = req.headers.authorization.split(' ')[1] // Bearer asfasnfkajsfnjk
         const decodedToken = jwt.verify(token, process.env.SECRET_KEY)
         const {userID} = req.headers
-        const chat = await Chat.findOne({where: {author_id:userID, user_id:decodedToken.id} 
-            || {author_id:decodedToken.id,user_id:userID}})
+        const chat = await Chat.findOne({where: {[Op.or]:[{author_id:userID, user_id:decodedToken.id} 
+            , {author_id:decodedToken.id,user_id:userID}]}})
         if (!chat) {
                 return next(ApiError.internal('Чата не существует'))
         }

@@ -5,8 +5,14 @@ import { Button} from 'react-bootstrap'
 import {ChatComponent} from './ChatComponent'
 import {AuthorComponent} from './AuthorComponent'
 import { DocumentComponent } from './DocumentComponent';
+import { useHistory } from 'react-router-dom';
 
 export const RequestInfoComponent = ({info}) => {
+    const history =  useHistory()
+    const clickHandler = e => {
+        e.preventDefault();
+        history.push('/messages')
+    }
     if(info){
         return(
             <>
@@ -18,7 +24,7 @@ export const RequestInfoComponent = ({info}) => {
                         <p className="row-3">Прикрепленные документы: <br /> <DocumentComponent reqId={info.id} /></p>
                     </Card.Body>
                     <Card.Footer >
-                        <Button style={{float: "left"}} variant="primary">Открыть чат</Button>
+                        <Button style={{float: "left"}} variant="primary" onClick={clickHandler}>Открыть чат</Button>
                        <Button style={{float: "right"}} variant="danger">Отменить заявление</Button>
                     </Card.Footer>
                 </Card>
