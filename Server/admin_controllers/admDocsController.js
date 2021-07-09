@@ -78,13 +78,13 @@ class AdmDocController {
             const newMessage = await Message.create({chat_id:candidateChat.dataValues.id, user_id:senderId, author_id:userId, text:message})
             
             if(!newMessage){
-                return next(ApiError.internal('Хуй 1'))
+                return next(ApiError.internal('Ошибка создания сообщения'))
             }
            
             const lastMessage = firstUser.first_name + ' - ' + message
             const ChatMessage = await Chat.update({last_message:lastMessage},{where: {id:candidateChat.id }})
             if(!ChatMessage){
-                console.log("HUUUUUUUUUUi")
+                return next(ApiError.internal('Ошибка добавления сообщения'))
             }
             
             
@@ -113,7 +113,6 @@ class AdmDocController {
         }
 
         const updateStatus = DocReq.update({status:status}, {where: {id:id}})
-        console.log("sss")
         if (!updateStatus) {
             return next(ApiError.internal('Ошибка обновления статуса выполнения'))
         }
