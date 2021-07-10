@@ -41,6 +41,9 @@ Web-app for OINPE NRNU MEPhi filesharing system
 ![Users](http://github.com/file-sharing-erp-team/file-sharing-erp/raw/main/images/users.png)
 
 
+## Generated Docs
+[Example](http://github.com/file-sharing-erp-team/file-sharing-erp/raw/main/examples/example.docx)
+
 ## About us
 
 We are students of [OINPE NRNU MEPhi](http://eng.iate.obninsk.ru/) who are interested in web development.
