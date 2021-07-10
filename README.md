@@ -44,15 +44,20 @@ Web-app for OINPE NRNU MEPhi filesharing system
 ### `Mobile App`
 
 #### Auth Form
-![Auth](http://github.com/file-sharing-erp-team/file-sharing-erp/raw/main/images/mobile_auth.png)
+<p align="center">
+  <img src="http://github.com/file-sharing-erp-team/file-sharing-erp/raw/main/images/mobile_auth.png" />
+</p>
 
 #### Create Request
-![Auth](http://github.com/file-sharing-erp-team/file-sharing-erp/raw/main/images/mobile_new.png)
+<p align="center">
+  <img src="http://github.com/file-sharing-erp-team/file-sharing-erp/raw/main/images/mobile_new.png" />
+</p>
 
 #### Creation Form 
-![First](http://github.com/file-sharing-erp-team/file-sharing-erp/raw/main/images/mobile_form_1.png)
-
-![Second](http://github.com/file-sharing-erp-team/file-sharing-erp/raw/main/images/mobile_form_2.png)
+<p align="center">
+  <img src="http://github.com/file-sharing-erp-team/file-sharing-erp/raw/main/images/mobile_form_1.png" />
+  <img src="http://github.com/file-sharing-erp-team/file-sharing-erp/raw/main/images/mobile_form_2.png" />
+</p>
 
 
 ## Generated Docs
