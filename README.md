@@ -42,7 +42,7 @@ Web-app for OINPE NRNU MEPhi filesharing system
 
 
 ## Generated Docs
-[Example](https://github.com/file-sharing-erp-team/file-sharing-erp/tree/main/Examples/Example.docx)
+[Example](https://github.com/file-sharing-erp-team/file-sharing-erp/tree/main/Examples)
 
 ## About us
 
