@@ -5,7 +5,7 @@
 
 ### Client's Panels
 
-![Main Page](http://github.com/file-sharing-erp-team/file-sharing-erp/tree/main/images/main.png)
+![Main Page](http://github.com/file-sharing-erp-team/file-sharing-erp/raw/main/images/main.png)
 
 
 * CLIENT - https://github.com/file-sharing-erp-team/file-sharing-erp/tree/main/client
