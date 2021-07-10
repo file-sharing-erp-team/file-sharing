@@ -22,7 +22,7 @@ export const MyRequestCard = ({requestInfo}) => {
                     <Card.Subtitle>Статус: <StatusIconComponent status={requestInfo.status} /></Card.Subtitle>
                     <br/>
                     
-                    <Card.Link style={{fontSize:'15px'}} href={link}>На страницу заявки <i class="fas fa-long-arrow-alt-right"></i> </Card.Link>
+                    <Card.Link style={{fontSize:'15px'}} href={link}>На страницу заявки <i className="fas fa-long-arrow-alt-right"></i> </Card.Link>
                 </Card.Body>
             </Card>
         </>

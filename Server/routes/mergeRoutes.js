@@ -22,6 +22,6 @@ router.use('/chat', authMiddleware, ChatRouter)     //* /file_sharing/chat
 router.use('/msg', authMiddleware, MessageRouter)   //* /file_sharing/msg
 router.use('/admUser', authMiddleware, AdmUserRouter)   //* /file_sharing/admUser
 router.use('/admDocs', authMiddleware, AdminDocsController)   //* /file_sharing/admDocs
-router.use('/notifications', authMiddleware, NotificationRouter) //* /notifications
+router.use('/notifications', authMiddleware, NotificationRouter) //* /file_sharing/notifications
 
 module.exports = router

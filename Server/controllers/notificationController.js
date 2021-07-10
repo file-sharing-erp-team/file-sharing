@@ -22,6 +22,19 @@ class NotificationController {
         return res.status(200).json({notifications})
 
     }
+
+    async updateStatus(req, res, next) {
+        const token = req.headers.authorization.split(' ')[1]
+        if(!token) {
+            return res.status(401).json({message: "Токен не валиден"})
+        }
+        const {id} = req.body
+
+        const notification = await Notification.update({checked: true}, {where:{id:id}})
+
+        return res.status(200).json({message:"ok"})
+
+    }
 }
 
 module.exports = new NotificationController()

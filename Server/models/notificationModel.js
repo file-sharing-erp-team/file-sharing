@@ -9,7 +9,9 @@ const Notification = sequelize.define('notification', {
     },
     user_id: {type: DataTypes.INTEGER, required: true
     },
-    text : { type: DataTypes.STRING, required: true}
+    text : { type: DataTypes.STRING, required: true},
+    checked: { type: DataTypes.BOOLEAN, default: false},
+    link: { type: DataTypes.STRING, required: true}
 })
 
 module.exports = Notification;
