@@ -1,9 +1,9 @@
 # File-Sharing-ERP
 Web-app for OINPE NRNU MEPhi filesharing system
 
-![LOGO](http://github.com/file-sharing-erp-team/file-sharing-erp/raw/main/images/logo.png)
+![LOGO](http://github.com/file-sharing-erp-team/file-sharing-erp/raw/main/images/logo.png?style=centerme)
 
-[CLIENT](https://github.com/file-sharing-erp-team/file-sharing-erp/tree/main/client)
+[CLIENT](https://github.com/file-sharing-erp-team/file-sharing-erp/tree/main/client?style=centerme)
 [SERVER](https://github.com/file-sharing-erp-team/file-sharing-erp/tree/main/Server)
 [MOBILE](https://github.com/file-sharing-erp-team/file-sharing-erp/tree/main/android)
 
