@@ -10,6 +10,7 @@ import axios from 'axios'
 import 'react-toastify/dist/ReactToastify.css';
 import {toast} from 'react-toastify'
 import Dropzone from 'react-dropzone';
+import {useHistory} from 'react-router-dom'
 
 
 export const CreateReqPage = () => {
@@ -18,6 +19,7 @@ export const CreateReqPage = () => {
     const {token, role, userId} = useAuth()
     const [show, setShow] = useState(false);
     const message = useMessage()
+    const history = useHistory()
     const dropRef = useRef()
     const [form, setForm] = useState( {
         type: useParams().type,
@@ -75,6 +77,7 @@ export const CreateReqPage = () => {
         axios.put('http://localhost:5000/file_sharing/docs/create',formData, {headers: {'Authorization': `Bearer ${token}`}})
         .then(res => {
             console.log(res)
+            history.push('/my')
             toast.success(res.message, {
                 position: "bottom-right",
                 autoClose: 5000,
