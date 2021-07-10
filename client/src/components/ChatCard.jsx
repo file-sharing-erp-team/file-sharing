@@ -9,6 +9,7 @@ export const ChatCard = ({chat}) => {
 
     const chatHandler = () => {
         curChat.push(chat.id)
+        window.location.reload()
     }
     console.log(chat)
     if(!chat){

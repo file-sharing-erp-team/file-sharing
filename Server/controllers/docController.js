@@ -6,6 +6,7 @@ const User = require('../models/model_user')
 const uuid = require('uuid')
 const sequelize = require('../db')
 const cF =  require('../utils/createDocx')
+const Notification = require('../models/notificationModel')
 
 //const DIR = path.join(__dirname, '/files').toString()
 
@@ -57,14 +58,18 @@ class DocController {
             const newFile = cF.create(`${checkUser.last_name} ${checkUser.first_name} ${checkUser.middle_name}`,`${checkUser.group}`, `${course}`, `${checkUser.phone}`, "5000", "reason", "date", "13")
             const route = `http://localhost:5000/files/${newFile}`
             const newDoc = await Doc.create({file_name:newFile, src:route, author_id:checkUser.id, reqId: docReq.id})
+            const notify = await Notification.create({type: 1, user_id: checkUser.id, text: 'Зявление на мат. помощь. отправлено'})
             return res.status(200).json({docReq, doc}) 
         }
         else if(type === '2') {
             const newFile = cF.createMoney(`${course}`,`${checkUser.group}`,`${checkUser.last_name} ${checkUser.first_name} ${checkUser.middle_name}`, "date")
             const route = `http://localhost:5000/files/${newFile}`
             const newDoc = await Doc.create({file_name:newFile, src:route, author_id:checkUser.id, reqId: docReq.id})
+            const notify = await Notification.create({type: 1, user_id: checkUser.id, text: 'Зявление на повышенную стипендию отправлено'})
             return res.status(200).json({docReq, doc}) 
         }
+        
+
         return res.status(200).json({docReq, doc}) 
         
         

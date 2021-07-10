@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken')
 const Message = require('../models/messageModels')
 const Chat = require('../models/chatModel')
 const User = require('../models/model_user')
+const Notification = require('../models/notificationModel')
 
 class MessageController {
 
@@ -29,9 +30,11 @@ class MessageController {
         let message;
         if(candidateChat.user_id === decoded.id){
             message = await Message.create({chat_id, user_id: decoded.id, author_id:candidateChat.author_id, text})
+            const notify = await Notification.create({type: 2, user_id: candidateChat.author_id, text: 'Вам пришло новое сообщение (' + candidateChat.chat_name +')'})
         }
         else{
             message = await Message.create({chat_id, user_id: candidateChat.author_id, author_id:decoded.id, text})
+            const notify = await Notification.create({type: 2, user_id: decoded.id, text: 'Вам пришло новое сообщение (' + candidateChat.chat_name +')'})
         }
         
         if(!message) {

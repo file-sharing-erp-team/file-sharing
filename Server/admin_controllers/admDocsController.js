@@ -5,6 +5,7 @@ const DocReq = require('../models/docRequest')
 const User = require('../models/model_user')
 const Chat = require('../models/chatModel')
 const Message = require('../models/messageModels')
+const Notification = require('../models/notificationModel')
 const {Op} = require('sequelize')
 
 class AdmDocController {
@@ -77,7 +78,7 @@ class AdmDocController {
             //return next(ApiError.badRequest('Такой чат уже существует'))
             console.log(candidateChat.dataValues.id)
             const newMessage = await Message.create({chat_id:candidateChat.dataValues.id, user_id:senderId, author_id:userId, text:message})
-            
+            const notify = await Notification.create({type: 2, user_id: senderId, text: 'Вам пришло новое сообщение (' + candidateChat.chat_name +')'})
             if(!newMessage){
                 return next(ApiError.internal('Ошибка создания сообщения'))
             }
@@ -103,6 +104,7 @@ class AdmDocController {
                 return next(ApiError.internal('Ошибка обновления статуса выполнения'))
             }
             const newMessage = await Message.create({chat_id: createChat.id, user_id:senderId, author_id:userId, text:message})
+            const notify = await Notification.create({type: 2, user_id: senderId, text: 'Вам пришло новое сообщение (' + createChat.chat_name +')'})
             if(!newMessage){
                 return next(ApiError.internal('Ошибка обновления статуса выполнения'))
             }
@@ -117,6 +119,7 @@ class AdmDocController {
         if (!updateStatus) {
             return next(ApiError.internal('Ошибка обновления статуса выполнения'))
         }
+        const notify = await Notification.create({type: 3, user_id: senderId, text: `У вашего <a href={\`/info/${id}\`}>заявления</a> обновился статус`})
         return res.status(200).json({message: "Success"})
     }
 
