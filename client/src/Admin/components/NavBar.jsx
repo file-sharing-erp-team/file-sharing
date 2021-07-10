@@ -15,6 +15,13 @@ export const NavBar = () => {
     return (
         <Navbar expand="lg" light bg="light">
           <Navbar.Brand href="/admin">
+          <img
+              alt=""
+              src="/logo.png"
+              width="30"
+              height="30"
+              className="d-inline-block align-top"
+            />{' '}
             File Sharing
           </Navbar.Brand>
           <Navbar.Toggler target="#navbarSupportedContent" />
@@ -29,6 +36,7 @@ export const NavBar = () => {
               <Nav.Item active>
                 <Nav.Link href="/admin/users">Управление данными</Nav.Link>
               </Nav.Item>
+
             </Navbar.Nav>
             <Form inline my="2 lg-0" onSubmit={logoutHandler}>
               <Button className="ms-3" success my="2 sm-0" onClick={logoutHandler}>Выйти</Button>

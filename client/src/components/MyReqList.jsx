@@ -5,15 +5,20 @@ export const MyRequestList = ({requests}) => {
     if(requests ){
         return(
             <>
+                <div style={{marginTop:'2%'}}>
+                    <h4 className="ms-3">Мои заявления</h4>
+                    <div className="row" style={{paddingTop: 0, marginTop: 0, width: '100%'}}>
+                        {Object.keys(requests).map(key => {
+                            return(
+                                <>
+                                
+                                    <MyRequestCard key={requests[key].id} requestInfo={requests[key]} />
+                                </>
+                            )
+                        })}
+                    </div>
+                </div>
                 
-                {Object.keys(requests).map(key => {
-                    return(
-                        <>
-                           
-                            <MyRequestCard key={requests[key].id} requestInfo={requests[key]} />
-                        </>
-                    )
-                })}
             </>
         )
     }
