@@ -1,4 +1,4 @@
-# File-Sharing-ERP
+# File-Sharing
 Web-app for OINPE NRNU MEPhi filesharing system
 <p align="center">
   <img src="http://github.com/file-sharing-erp-team/file-sharing-erp/raw/main/images/logo.png" />
