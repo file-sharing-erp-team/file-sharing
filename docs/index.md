@@ -1,37 +1,77 @@
-## Welcome to GitHub Pages
+## File Sharing
 
-You can use the [editor on GitHub](https://github.com/file-sharing-erp-team/file-sharing/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
+### Web-app for OINPE NRNU MEPhi filesharing system
+<p align="center">
+  <img src="http://github.com/file-sharing-erp-team/file-sharing-erp/raw/main/images/logo.png" />
+</p>
+<p align="center">
+  <a href="https://github.com/file-sharing-erp-team/file-sharing-erp/tree/main/client">Client</a>
+  <a href="https://github.com/file-sharing-erp-team/file-sharing-erp/tree/main/Server">Server</a>
+  <a href="https://github.com/file-sharing-erp-team/file-sharing-erp/tree/main/android">Mobile</a>
+</p>
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Demonstration
 
-### Markdown
+### `Client's Panels`
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+#### Main
+![Main Page](http://github.com/file-sharing-erp-team/file-sharing-erp/raw/main/images/main.png)
 
-```markdown
-Syntax highlighted code block
+#### Creation Page
+![Creation Page](http://github.com/file-sharing-erp-team/file-sharing-erp/raw/main/images/creation.png)
 
-# Header 1
-## Header 2
-### Header 3
+#### Create Doc Request
+![New](http://github.com/file-sharing-erp-team/file-sharing-erp/raw/main/images/new.png)
 
-- Bulleted
-- List
+#### Chats
+![Chats](http://github.com/file-sharing-erp-team/file-sharing-erp/raw/main/images/new.png)
 
-1. Numbered
-2. List
+#### Notifications
+![Notifications](http://github.com/file-sharing-erp-team/file-sharing-erp/raw/main/images/notifications.png)
 
-**Bold** and _Italic_ and `Code` text
 
-[Link](url) and ![Image](src)
-```
+### `Admin's Panel`
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+#### DashBoard
+![Dashboard](http://github.com/file-sharing-erp-team/file-sharing-erp/raw/main/images/admin.png)
 
-### Jekyll Themes
+#### Response
+![Response](http://github.com/file-sharing-erp-team/file-sharing-erp/raw/main/images/response.png)
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/file-sharing-erp-team/file-sharing/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+#### Users
+![Users](http://github.com/file-sharing-erp-team/file-sharing-erp/raw/main/images/users.png)
 
-### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+### `Mobile App`
+
+#### Auth Form
+<p align="center">
+  <img src="http://github.com/file-sharing-erp-team/file-sharing-erp/raw/main/images/mobile_auth.png" />
+</p>
+
+#### Create Request
+<p align="center">
+  <img src="http://github.com/file-sharing-erp-team/file-sharing-erp/raw/main/images/mobile_new.png" />
+</p>
+
+#### Creation Form 
+<p align="center">
+  <img src="http://github.com/file-sharing-erp-team/file-sharing-erp/raw/main/images/mobile_form_1.png" />
+  <img src="http://github.com/file-sharing-erp-team/file-sharing-erp/raw/main/images/mobile_form_2.png" />
+</p>
+
+
+## Generated Docs
+[Example](https://github.com/file-sharing-erp-team/file-sharing-erp/tree/main/Examples)
+
+## About us
+
+We are students of [OINPE NRNU MEPhi](http://eng.iate.obninsk.ru/) who are interested in web development.
+This project is our assignment for the summer practice.
+
+
+
+
+
+
+
