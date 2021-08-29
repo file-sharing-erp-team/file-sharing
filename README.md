@@ -9,6 +9,10 @@ Web-app for OINPE NRNU MEPhi filesharing system
   <a href="https://github.com/file-sharing-erp-team/file-sharing-erp/tree/main/android">Mobile</a>
 </p>
 
+<p align="center">
+  <a href="https://github.com/file-sharing-erp-team/file-sharing.wiki.git">Wiki</a>
+</p>
+
 ## Demonstration
 
 ### `Client's Panels`
