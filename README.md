@@ -10,7 +10,7 @@ Web-app for OINPE NRNU MEPhi filesharing system
 </p>
 
 <p align="center">
-  <a href="https://github.com/file-sharing-erp-team/file-sharing.wiki.git">Wiki</a>
+  <a href="https://github.com/file-sharing-erp-team/file-sharing/wiki/How-to-start-working-with-web-clients-code">Wiki</a>
 </p>
 
 ## Demonstration
